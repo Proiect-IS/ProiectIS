@@ -11,5 +11,4 @@ public class ProiectIsAeroportApplication {
 		System.out.println("Hello World!");
 		System.out.println("lolo");
 	}
-
 }
