@@ -10,6 +10,7 @@ public class ProiectIsAeroportApplication {
 		SpringApplication.run(ProiectIsAeroportApplication.class, args);
 		System.out.println("Hello World!");
 		System.out.println("lolo");
+		System.out.println("David");
 	}
 
 }
