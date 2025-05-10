@@ -1,0 +1,94 @@
+.nav-bar {
+    background-color: #003366;
+    display: flex;
+    width: 100%;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+}
+
+.nav-bar-text {
+    color: #FFFFFF;
+    padding-left: 40px;
+    font-size: 60px;
+}
+
+.btn {
+    background-color: #B2CDE9;
+    color: #000000;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #2A629A;
+    color: #FFFFFF;
+}
+
+.title-container {
+    width: 100%;
+}
+
+.title-text {
+    font-size: 36px;
+    padding-top: 60px;
+    padding-left: 100px;
+}
+
+.text-underline {
+    width: 25%;
+    border: 2px solid black;
+    opacity: 1;
+    border-radius: 2px;
+    margin-left: 100px;
+}
+
+.form-container {
+    display: grid;
+    flex:1;
+    grid-template-columns: 1fr 1fr; /* Două coloane cu lățime egală */
+    gap: 20px; /* Spațiu între coloane și rânduri */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.bottomButtons {
+}
+
+.form-container-two-columns label {
+    font-weight: bold;
+    margin-right: 10px;
+    text-align: left;
+}
+
+.form-container-two-columns input[type="text"],
+.form-container-two-columns input[type="number"],
+.form-container-two-columns input[type="time"],
+.form-container-two-columns select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-container-two-columns .column > div:nth-child(5) input[type="text"] {
+    width: auto; /* Lățime auto pentru câmpurile de rută */
+}
+
+.form-container-two-columns .column > div:nth-child(5) span {
+    margin: 0 5px;
+}
+
+.form-container .bottomButtons {
+    grid-column: 1 / 3;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.form-container .bottomButtons button {
+    margin: 0 10px;
+}
