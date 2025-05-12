@@ -62,7 +62,7 @@ public class SerializareController {
 
             Zbor zbor = new Zbor(codCursa, tipZbor, rutaDestinatie, rutaPlecare, pretBusiness, pretClasa1, pretEconomie,modelAvion, locuriBusiness,locuriClasa1,locuriEconomie, esteTurRetur, discount);
             zboruri.add(zbor);
-            //salveazaZboruriInFile();
+            scriere(zboruri);
 
             return new ResponseEntity<>("Zbor salvat cu succes!", HttpStatus.OK);
 
