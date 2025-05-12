@@ -4,7 +4,7 @@ public class Avion {
     private Model model;
     private Locuri locuri;
 
-    public Avion(Model model, Locuri locuri) {
+    public Avion(Model model) {
         this.model = model;
         this.locuri = locuri;
     }
