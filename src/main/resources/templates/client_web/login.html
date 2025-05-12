@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/loginCss.css}">
 </head>
 <body>
+<div class="login-container">
+    <h1>Autentificare</h1>
+    <form th:action="@{/login}" method="post">
+        <div class="form-group">
+            <label for="userType">Tip Utilizator:</label>
+            <select id="userType" name="userType" required>
+                <option value="">Selectează o opțiune</option>
+                <option value="client">Companie</option>
+                <option value="companie">Staff</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="password">Parolă:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn">Logare</button>
 
+        <div th:if="${param.error}" class="error-message">
+            Nume de utilizator sau parolă incorecte.
+        </div>
+        <div th:if="${param.logout}" class="success-message">
+            Ai fost deconectat cu succes.
+        </div>
+    </form>
+</div>
 </body>
 </html>
