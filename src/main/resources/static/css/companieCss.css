@@ -26,21 +26,22 @@
 }
 
 .title-container {
-    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;/
 }
 
 .title-text {
     font-size: 36px;
     padding-top: 60px;
-    padding-left: 100px;
 }
 
 .text-underline {
-    width: 25%;
+    width: 50%;
     border: 2px solid black;
     opacity: 1;
     border-radius: 2px;
-    margin-left: 100px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .form-container {

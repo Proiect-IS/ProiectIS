@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <header>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -7,7 +8,28 @@
         DareSky
     </title>
 </header>
-<body  style="background-color: #F8F9FA">
+<body style="background-color: #F8F9FA">
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tipZborSelect = document.getElementById('tipZbor');
+        const lunaStartSelect = document.getElementById('lunaStart');
+        const lunaEndSelect = document.getElementById('lunaEnd');
+
+        function togglePerioada() {
+            if (tipZborSelect.value === 'sezonier') {
+                lunaStartSelect.disabled = false;
+                lunaEndSelect.disabled = false;
+            } else {
+                lunaStartSelect.disabled = true;
+                lunaEndSelect.disabled = true;
+            }
+        }
+
+        togglePerioada();
+
+        tipZborSelect.addEventListener('change', togglePerioada);
+    });
+</script>
 <div class="nav-bar">
     <div class="logo">
         <h1 class="nav-bar-text">DareSky</h1>
@@ -18,100 +40,137 @@
     <h3 class="title-text">Detalii zbor</h3>
     <hr class="text-underline">
 </div>
-<div class="form-container">
-    <div class="column">
-        <div>
-            <label for="codCursa">Cod cursa:</label>
-            <input type="text" id="codCursa" name="codCursa">
+<div class="container">
+    <form class="row g-3">
+        <div class="col-md-6">
+            <label for="codCursa" class="form-label">Cod cursa:</label>
+            <input type="text" class="form-control" id="codCursa" name="codCursa">
         </div>
-        <br>
-        <div>
-            <label for="modelAvion">Model avion:</label>
-            <input type="text" id="modelAvion" name="modelAvion">
+        <div class="col-md-6">
+            <label for="modelAvion" class="form-label">Model avion:</label>
+            <input type="text" class="form-control" id="modelAvion" name="modelAvion">
         </div>
-        <br>
-        <div>
-            <label for="numarLocuriTotale">Numar locuri totale:</label>
-            <input type="number" id="numarLocuriTotale" name="numarLocuriTotale">
-        </div>
-        <br>
-        <div>
-            <label>Numar locuri pe clasa:</label>
-            <input type="number" name="locuriClasa1" placeholder="Clasa 1" style="width: 80px;">
-            <input type="number" name="locuriClasa2" placeholder="Bussines" style="width: 80px; margin-left: 5px;">
-            <input type="number" name="locuriClasa3" placeholder="Eco" style="width: 80px; margin-left: 5px;">
-        </div> <br>
-        <div>
-            <label for="rutaPlecare">Ruta:</label>
-            <input type="text" id="rutaPlecare" name="rutaPlecare" placeholder="Plecare" style="width: 100px;">
-            <input type="text" id="rutaDestinatie" name="rutaDestinatie" placeholder="Destinatie" style="width: 100px; margin-left: 5px;">
-        </div> <br>
-        <div>
-            <label for="pret">Pret:</label>
-            <input type="number" step="0.01" id="pret" name="pret">
-        </div>
-    </div>
 
-    <div class="column">
-        <div>
-            <label for="tipZbor">Tip zbor:</label>
-            <select id="tipZbor" name="tipZbor">
+        <div class="col-md-12">
+            <label for="numarLocuriTotale" class="form-label">Numar locuri totale:</label>
+            <input type="number" class="form-control" id="numarLocuriTotale" name="numarLocuriTotale">
+        </div>
+
+        <div class="col-md-12">
+            <label class="form-label">Numar locuri pe clasa:</label>
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="number" class="form-control" name="locuriClasa1" placeholder="Clasa 1">
+                </div>
+                <div class="col-md-4">
+                    <input type="number" class="form-control" name="locuriClasaBusiness" placeholder="Business">
+                </div>
+                <div class="col-md-4">
+                    <input type="number" class="form-control" name="locuriClasaEconomie" placeholder="Economie">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label for="rutaPlecare" class="form-label">Ruta Plecare:</label>
+            <input type="text" class="form-control" id="rutaPlecare" name="rutaPlecare" placeholder="Plecare">
+        </div>
+        <div class="col-md-6">
+            <label for="rutaDestinatie" class="form-label">Ruta Destinatie:</label>
+            <input type="text" class="form-control" id="rutaDestinatie" name="rutaDestinatie" placeholder="Destinatie">
+        </div>
+
+        <div class="col-md-12">
+            <label class="form-label">Pret:</label>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="number" class="form-control" name="pretClasa1" step="1" placeholder="Pret Clasa 1">
+                        <span class="input-group-text">RON</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="number" class="form-control" name="pretClasaBusiness" step="1" placeholder="Pret Business">
+                        <span class="input-group-text">RON</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="number" class="form-control" name="pretClasaEconomie" step="1" placeholder="Pret Economie">
+                        <span class="input-group-text">RON</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <label for="tipZbor" class="form-label">Tip zbor:</label>
+            <select class="form-select" id="tipZbor" name="tipZbor">
                 <option value="">Selecteaza...</option>
                 <option value="regulat">Regulat</option>
                 <option value="sezonier">Sezonier</option>
             </select>
-        </div> <br>
-        <div>
-            <label for="lunaStart">Perioada:</label>
-            <select id="lunaStart" name="lunaStart">
-                <option>Ianuarie</option>
-                <option>Februarie</option>
-                <option>Martie</option>
-                <option>Aprilie</option>
-                <option>Mai</option>
-                <option>Iunie</option>
-                <option>Iulie</option>
-                <option>August</option>
-                <option>Septembrie</option>
-                <option>Octombrie</option>
-                <option>Noiembrie</option>
-                <option>Decembrie</option>
-            </select>
-
-            <select id="lunaEnd" name="lunaEnd">
-                <option>Ianuarie</option>
-                <option>Februarie</option>
-                <option>Martie</option>
-                <option>Aprilie</option>
-                <option>Mai</option>
-                <option>Iunie</option>
-                <option>Iulie</option>
-                <option>August</option>
-                <option>Septembrie</option>
-                <option>Octombrie</option>
-                <option>Noiembrie</option>
-                <option>Decembrie</option>
-            </select>
-
-        </div> <br>
-        <div>
-            <label for="zi">Zi:</label>
-            <input type="text" id="zi" name="zi">
-        </div> <br>
-        <div>
-            <label for="oraPlecare">Ora plecare:</label>
-            <input type="time" id="oraPlecare" name="oraPlecare">
-        </div><br>
-        <div>
-            <label for="discount">Discount:</label>
-            <input type="number" step="0.01" id="discount" name="discount">
         </div>
-    </div>
-    <div class="bottomButtons">
-    <button type="button" class="btn">Salvare</button>
-    <button type="button" class="btn" onclick="window.location.href='companie'">Anulare</button>
-    </div>
-</div>
+        <div class="col-md-3">
+            <label class="form-label">Perioada:</label>
+            <div class="row">
+                <div class="col-md-6">
+                    <select class="form-select" id="lunaStart" name="lunaStart" disabled>
+                        <option>Ianuarie</option>
+                        <option>Februarie</option>
+                        <option>Martie</option>
+                        <option>Aprilie</option>
+                        <option>Mai</option>
+                        <option>Iunie</option>
+                        <option>Iulie</option>
+                        <option>August</option>
+                        <option>Septembrie</option>
+                        <option>Octombrie</option>
+                        <option>Noiembrie</option>
+                        <option>Decembrie</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <select class="form-select" id="lunaEnd" name="lunaEnd" disabled>
+                        <option>Ianuarie</option>
+                        <option>Februarie</option>
+                        <option>Martie</option>
+                        <option>Aprilie</option>
+                        <option>Mai</option>
+                        <option>Iunie</option>
+                        <option>Iulie</option>
+                        <option>August</option>
+                        <option>Septembrie</option>
+                        <option>Octombrie</option>
+                        <option>Noiembrie</option>
+                        <option>Decembrie</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <label for="zi" class="form-label">Zi (0-31):</label>
+            <input type="number" class="form-control" id="zi" name="zi" min="0" max="31">
+        </div>
+        <div class="col-md-3">
+            <label for="oraPlecare" class="form-label">Ora plecare:</label>
+            <input type="time" class="form-control" id="oraPlecare" name="oraPlecare">
+        </div>
+        <div class="col-md-12">
+            <label for="discount" class="form-label">Discount:</label>
+            <input type="number" class="form-control" step="1" id="discount" name="discount">
+        </div>
 
+        <div class="col-12">
+            <div class="bottomButtons">
+                <button type="button" class="btn btn-primary">Salvare</button>
+                <button type="button" class="btn btn-secondary" onclick="window.location.href='companie'">Anulare</button>
+            </div>
+        </div>
+    </form>
+</div>
 </body>
 </html>
