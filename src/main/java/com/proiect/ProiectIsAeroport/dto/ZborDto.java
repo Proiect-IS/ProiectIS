@@ -9,16 +9,16 @@ import java.time.LocalTime;
 public class ZborDto {
     public String codCursa;
     public Tip_Zbor tipZbor;
-    public String orasPlecare;
-    public String orasDestinatie;
-    public int tarifeBusiness;
-    public int tarifeClasa1;
-    public int tarifeEconomie;
-    public Model model;
+    public String rutaPlecare;
+    public String rutaDestinatie;
+    public int pretBusiness;
+    public int pretClasa1;
+    public int pretEconomie;
+    public Model modelAvion;
     public boolean esteTurRetur;
-    public String ziua;
-    public String ora;
-    public String inceput;
-    public String sfarsit;
+    public String zi;
+    public String oraPlecare;
+    public String lunaStart;
+    public String lunaEnd;
     public int discount;
 }
