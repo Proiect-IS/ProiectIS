@@ -11,7 +11,7 @@ public class LoginController {
 
     @GetMapping("/login")
     public String showLoginPage() {
-        return "client_web/login"; // Asigură-te că aceasta este calea corectă către login.html
+        return "client_web/login";
     }
 
     @PostMapping("/login")
@@ -20,32 +20,34 @@ public class LoginController {
                                Model model) {
         if ("companie".equals(userType)) {
             // Logica de verificare a parolei pentru companii
-            if (checkCompanyPassword(username, password)) {
-                return "redirect:/companie.html"; // Redirect către pagina companiei
+            if (checkCompanyPassword(password)) {
+                return "redirect:/companie";
             } else {
-                model.addAttribute("error", "Nume de utilizator sau parolă incorecte.");
-                return "client_web/login"; // Rămâi pe pagina de login cu mesaj de eroare
+                model.addAttribute("error", "Parolă incorectă pentru tipul de utilizator selectat.");
+                return "client_web/login";
             }
-        } else if ("client".equals(userType)) {
+        } else if ("staff".equals(userType)) {
             // Logica de verificare a parolei pentru clienți standard
-            if (checkStandardUserPassword(username, password)) {
-                return "redirect:/home.html"; // Redirect către pagina principală a clientului
+            if (checkStandardUserPassword(password)) {
+                return "redirect:/home.html";
             } else {
-                model.addAttribute("error", "Nume de utilizator sau parolă incorecte.");
-                return "client_web/login"; // Rămâi pe pagina de login cu mesaj de eroare
+                model.addAttribute("error", "Parolă incorectă pentru tipul de utilizator selectat.");
+                return "client_web/login";
             }
         } else {
             model.addAttribute("error", "Tip de utilizator invalid.");
-            return "client_web/login"; // Rămâi pe pagina de login cu mesaj de eroare
+            return "client_web/login";
         }
     }
 
-    private boolean checkCompanyPassword(String username, String password) {
-        return "companie1".equals(username) && "parolacompanie".equals(password);
+    // Metode placeholder pentru verificarea parolei (va trebui să le implementezi)
+    private boolean checkCompanyPassword(String password) {
+        // Aici vei interoga baza de date sau altă sursă pentru a verifica parola companiei
+        // Compară password cu parola stocată pentru companii
+        return "parolacompanie".equals(password);
     }
 
-    private boolean checkStandardUserPassword(String username, String password) {
-        return "user1".equals(username) && "parola1".equals(password) ||
-                "user2".equals(username) && "parola2".equals(password);
+    private boolean checkStandardUserPassword(String password) {
+        return "parolastaff".equals(password);
     }
 }
