@@ -43,5 +43,20 @@
     "locuriEconomie": 133,
     "esteTurRetur": false,
     "discount": 0
+  },
+  {
+    "cod_cursa": "b53422334354",
+    "tip_zbor": "REGULAT",
+    "oras_destinatie": "Tileagd",
+    "oras_plecare": "Miami",
+    "tarifeBusiness": 113,
+    "tarifeClasa1": 12,
+    "tarifeEconomie": 1113,
+    "model": "MODEL3",
+    "locuriBusiness": 122,
+    "locuriClasa1": 11,
+    "locuriEconomie": 133,
+    "esteTurRetur": false,
+    "discount": 0
   }
 ]
