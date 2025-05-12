@@ -8,8 +8,9 @@ public class Zbor {
     private Tarife tarife;
     private Avion avion;
     private boolean esteTurRetur;
+    private int discount;
 
-    public Zbor(String cod_cursa, Tip_Zbor tip_zbor, String oras_destinatie, String oras_plecare, Tarife tarife, Avion avion, boolean esteTurRetur) {
+    public Zbor(String cod_cursa, Tip_Zbor tip_zbor, String oras_destinatie, String oras_plecare, Tarife tarife, Avion avion, boolean esteTurRetur, int discount) {
         this.cod_cursa = cod_cursa;
         this.tip_zbor = tip_zbor;
         this.oras_destinatie = oras_destinatie;
@@ -17,6 +18,7 @@ public class Zbor {
         this.tarife = tarife;
         this.avion = avion;
         this.esteTurRetur = esteTurRetur;
+        this.discount = discount;
     }
 
     public String getCod_cursa() {
@@ -75,4 +77,11 @@ public class Zbor {
         this.esteTurRetur = esteTurRetur;
     }
 
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
 }
