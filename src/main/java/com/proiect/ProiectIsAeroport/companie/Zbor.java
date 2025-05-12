@@ -8,11 +8,14 @@ public class Zbor {
     private int tarifeBusiness;
     private int tarifeClasa1;
     private int tarifeEconomie;
-    private Avion avion;
+    private Model model;
+    private int locuriBusiness;
+    private int locuriClasa1;
+    private int locuriEconomie;
     private boolean esteTurRetur;
     private int discount;
 
-    public Zbor(String cod_cursa, Tip_Zbor tip_zbor, String oras_destinatie, String oras_plecare, int tarifeBusiness, int tarifeClasa1, int tarifeEconomie, Avion avion, boolean esteTurRetur, int discount) {
+    public Zbor(String cod_cursa, Tip_Zbor tip_zbor, String oras_destinatie, String oras_plecare, int tarifeBusiness, int tarifeClasa1, int tarifeEconomie, Model model, int locuriBusiness, int locuriClasa1, int locuriEconomie, boolean esteTurRetur, int discount) {
         this.cod_cursa = cod_cursa;
         this.tip_zbor = tip_zbor;
         this.oras_destinatie = oras_destinatie;
@@ -20,7 +23,10 @@ public class Zbor {
         this.tarifeBusiness = tarifeBusiness;
         this.tarifeClasa1 = tarifeClasa1;
         this.tarifeEconomie = tarifeEconomie;
-        this.avion = avion;
+        this.model = model;
+        this.locuriBusiness = locuriBusiness;
+        this.locuriClasa1 = locuriClasa1;
+        this.locuriEconomie = locuriEconomie;
         this.esteTurRetur = esteTurRetur;
         this.discount = discount;
     }
@@ -81,12 +87,36 @@ public class Zbor {
         this.tarifeEconomie = tarifeEconomie;
     }
 
-    public Avion getAvion() {
-        return avion;
+    public Model getModel() {
+        return model;
     }
 
-    public void setAvion(Avion avion) {
-        this.avion = avion;
+    public void setModel(Model model) {
+        this.model = model;
+    }
+
+    public int getLocuriBusiness() {
+        return locuriBusiness;
+    }
+
+    public void setLocuriBusiness(int locuriBusiness) {
+        this.locuriBusiness = locuriBusiness;
+    }
+
+    public int getLocuriClasa1() {
+        return locuriClasa1;
+    }
+
+    public void setLocuriClasa1(int locuriClasa1) {
+        this.locuriClasa1 = locuriClasa1;
+    }
+
+    public int getLocuriEconomie() {
+        return locuriEconomie;
+    }
+
+    public void setLocuriEconomie(int locuriEconomie) {
+        this.locuriEconomie = locuriEconomie;
     }
 
     public boolean isEsteTurRetur() {
@@ -103,5 +133,10 @@ public class Zbor {
 
     public void setDiscount(int discount) {
         this.discount = discount;
+    }
+
+    public int numar_locuri_total()
+    {
+        return locuriBusiness+locuriClasa1+locuriEconomie+locuriBusiness;
     }
 }

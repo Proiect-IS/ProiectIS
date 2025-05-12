@@ -15,6 +15,9 @@ public class ZborDto {
     public int pretClasa1;
     public int pretEconomie;
     public Model modelAvion;
+    public int locuriBusiness;
+    public int locuriClasa1;
+    public int locuriEconomie;
     public boolean esteTurRetur;
     public String zi;
     public String oraPlecare;
