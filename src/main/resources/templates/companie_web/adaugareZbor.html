@@ -28,6 +28,33 @@
         togglePerioada();
 
         tipZborSelect.addEventListener('change', togglePerioada);
+        zborForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Previne trimiterea standard a formularului
+
+            const formData = new FormData(zborForm);
+            const zborData = {};
+
+            for (const [key, value] of formData.entries()) {
+                zborData[key] = value;
+            }
+
+            fetch('/salveazaZbor', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(zborData)
+            })
+                .then(response => response.json()) // Sau response.text() dacă backend-ul nu returnează JSON
+                .then(data => {
+                    console.log('Succes:', data);
+                    // Aici poți gestiona răspunsul de la backend (de exemplu, afișa un mesaj de succes)
+                })
+                .catch((error) => {
+                    console.error('Eroare:', error);
+                    // Aici poți gestiona erorile (de exemplu, afișa un mesaj de eroare)
+                });
+        });
     });
 </script>
 <div class="nav-bar">
@@ -41,7 +68,7 @@
     <hr class="text-underline">
 </div>
 <div class="container">
-    <form class="row g-3">
+    <form class="row g-3" th:action="@{/salveazaZbor}" method="post" id="zborForm">
         <div class="col-md-6">
             <label for="codCursa" class="form-label">Cod cursa:</label>
             <input type="text" class="form-control" id="codCursa" name="codCursa">
@@ -49,11 +76,6 @@
         <div class="col-md-6">
             <label for="modelAvion" class="form-label">Model avion:</label>
             <input type="text" class="form-control" id="modelAvion" name="modelAvion">
-        </div>
-
-        <div class="col-md-12">
-            <label for="numarLocuriTotale" class="form-label">Numar locuri totale:</label>
-            <input type="number" class="form-control" id="numarLocuriTotale" name="numarLocuriTotale">
         </div>
 
         <div class="col-md-12">
@@ -166,7 +188,7 @@
 
         <div class="col-12">
             <div class="bottomButtons">
-                <button type="button" class="btn btn-primary">Salvare</button>
+                <button type="submit" class="btn btn-primary">Salvare</button>
                 <button type="button" class="btn btn-secondary" onclick="window.location.href='companie'">Anulare</button>
             </div>
         </div>
