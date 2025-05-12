@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 public class SerializareController {
-    @PostMapping("/adaugareZbor")
+    @PostMapping("/salveazaZbor")
     public ResponseEntity<String> salveazaZbor(@RequestBody ZborDto zborDto) throws IOException {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
