@@ -9,6 +9,7 @@ import com.proiect.ProiectIsAeroport.dto.ZborDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,14 +22,31 @@ public class SerializareController {
 
     private final List<Zbor> zboruri = new ArrayList<>();
     private final ObjectMapper objectMapper = new ObjectMapper();
-   // private final File zboruriFile = new File("zboruri.json");
+    private final File zboruriFile = new File("src/main/resources/zboruri.json");
+
+    // private final File zboruriFile = new File("zboruri.json");
     public static void scriere(List<Zbor> lista) {
         try {
-            ObjectMapper mapper=new ObjectMapper();
-            File file=new File("src/main/resources/zboruri.json");
-            mapper.writeValue(file,lista);
+            ObjectMapper mapper = new ObjectMapper();
+            File file = new File("src/main/resources/zboruri.json");
+            mapper.writeValue(file, lista);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public SerializareController() {
+        // Constructor: Încărcăm lista de zboruri din fișier la initializare
+        try {
+            if (zboruriFile.exists()) {
+                zboruri.addAll(objectMapper.readValue(zboruriFile, new TypeReference<List<Zbor>>() {
+                }));
+            }
+        } catch (IOException e) {
+            e.printStackTrace(); // Log the error
+            // Decide how to handle the error:
+            // 1. Inform the user and start with an empty list
+            // 2. Throw an exception to prevent the application from starting
         }
     }
 
@@ -55,12 +73,12 @@ public class SerializareController {
             // Momentan setăm esteTurRetur la false și discount la valoarea din form
             boolean esteTurRetur = false;
             int discount = Integer.parseInt(formData.get("discount"));
-            String zi=formData.get("zi");
-            String oraPlecare=formData.get("oraPlecare");
-            String lunaStart=formData.get("lunaStart");
-            String lunaEnd=formData.get("lunaEnd");
+            String zi = formData.get("zi");
+            String oraPlecare = formData.get("oraPlecare");
+            String lunaStart = formData.get("lunaStart");
+            String lunaEnd = formData.get("lunaEnd");
 
-            Zbor zbor = new Zbor(codCursa, tipZbor, rutaDestinatie, rutaPlecare, pretBusiness, pretClasa1, pretEconomie,modelAvion, locuriBusiness,locuriClasa1,locuriEconomie, esteTurRetur, discount);
+            Zbor zbor = new Zbor(codCursa, tipZbor, rutaDestinatie, rutaPlecare, pretBusiness, pretClasa1, pretEconomie, modelAvion, locuriBusiness, locuriClasa1, locuriEconomie, esteTurRetur, discount);
             zboruri.add(zbor);
             scriere(zboruri);
 
@@ -71,6 +89,6 @@ public class SerializareController {
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>("Eroare la salvarea zborului.", HttpStatus.INTERNAL_SERVER_ERROR);
-}
-}
+        }
+    }
 }

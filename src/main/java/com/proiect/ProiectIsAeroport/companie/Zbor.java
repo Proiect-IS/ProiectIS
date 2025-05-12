@@ -15,6 +15,8 @@ public class Zbor {
     private boolean esteTurRetur;
     private int discount;
 
+    public Zbor() {}
+
     public Zbor(String cod_cursa, Tip_Zbor tip_zbor, String oras_destinatie, String oras_plecare, int tarifeBusiness, int tarifeClasa1, int tarifeEconomie, Model model, int locuriBusiness, int locuriClasa1, int locuriEconomie, boolean esteTurRetur, int discount) {
         this.cod_cursa = cod_cursa;
         this.tip_zbor = tip_zbor;

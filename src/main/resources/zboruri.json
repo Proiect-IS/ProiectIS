@@ -13,5 +13,20 @@
     "locuriEconomie": 250,
     "esteTurRetur": false,
     "discount": 0
+  },
+  {
+    "cod_cursa": "12",
+    "tip_zbor": "REGULAT",
+    "oras_destinatie": "Italia",
+    "oras_plecare": "Timisoara",
+    "tarifeBusiness": 123,
+    "tarifeClasa1": 13,
+    "tarifeEconomie": 14,
+    "model": "MODEL2",
+    "locuriBusiness": 12,
+    "locuriClasa1": 12,
+    "locuriEconomie": 31,
+    "esteTurRetur": false,
+    "discount": 0
   }
 ]
