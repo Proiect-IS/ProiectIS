@@ -13,9 +13,10 @@
         const lunaStartSelect = document.getElementById('lunaStart');
         const lunaEndSelect = document.getElementById('lunaEnd');
         const zborForm = document.getElementById('zborForm');
+        const modelAvionInput = document.getElementById('modelAvion'); // Get the modelAvion input
 
         function togglePerioada() {
-            if (tipZborSelect.value === 'sezonier') {
+            if (tipZborSelect.value === 'SEZONIER') {
                 lunaStartSelect.disabled = false;
                 lunaEndSelect.disabled = false;
             } else {
@@ -37,8 +38,10 @@
             for (const [key, value] of formData.entries()) {
                 zborData[key] = value;
             }
-            //zborData['tipZbor'] = document.getElementById('tipZbor').value.toUpperCase();
-
+            zborData['tipZbor'] = document.getElementById('tipZbor').value.toUpperCase();
+            //zborData['model'] = document.getElementById('modelAvion').value.toUpperCase();
+            zborData['modelAvion'] = modelAvionInput.value.toUpperCase(); // Corrected line
+            //console.log(zborData);
             fetch('/salveazaZbor', {
                 method: 'POST',
                 headers: {
@@ -77,8 +80,8 @@
             <input type="text" class="form-control" id="codCursa" name="codCursa">
         </div>
         <div class="col-md-6">
-            <label for="model" class="form-label">Model avion:</label>
-            <input type="text" class="form-control" id="model" name="modelAvion">
+            <label for="modelAvion" class="form-label">Model avion:</label>
+            <input type="text" class="form-control" id="modelAvion" name="modelAvion">
         </div>
 
 
@@ -98,12 +101,12 @@
         </div>
 
         <div class="col-md-6">
-            <label for="orasPlecare" class="form-label">Ruta Plecare:</label>
-            <input type="text" class="form-control" id="orasPlecare" name="rutaPlecare" placeholder="Plecare">
+            <label for="rutaPlecare" class="form-label">Ruta Plecare:</label>
+            <input type="text" class="form-control" id="rutaPlecare" name="rutaPlecare" placeholder="Plecare">
         </div>
         <div class="col-md-6">
-            <label for="orasDestinatie" class="form-label">Ruta Destinatie:</label>
-            <input type="text" class="form-control" id="orasDestinatie" name="rutaDestinatie" placeholder="Destinatie">
+            <label for="rutaDestinatie" class="form-label">Ruta Destinatie:</label>
+            <input type="text" class="form-control" id="rutaDestinatie" name="rutaDestinatie" placeholder="Destinatie">
         </div>
 
         <div class="col-md-12">
@@ -136,15 +139,15 @@
             <label for="tipZbor" class="form-label">Tip zbor:</label>
             <select class="form-select" id="tipZbor" name="tipZbor">
                 <option value="">Selecteaza...</option>
-                <option value="regulat">Regulat</option>
-                <option value="sezonier">Sezonier</option>
+                <option value="REGULAT">Regulat</option>
+                <option value="SEZONIER">Sezonier</option>
             </select>
         </div>
         <div class="col-md-3">
             <label class="form-label">Perioada:</label>
             <div class="row">
                 <div class="col-md-6">
-                    <select class="form-select" id="lunaStart" name="inceput" disabled>
+                    <select class="form-select" id="lunaStart" name="lunaStart" disabled>
                         <option>Ianuarie</option>
                         <option>Februarie</option>
                         <option>Martie</option>
@@ -160,7 +163,7 @@
                     </select>
                 </div>
                 <div class="col-md-6">
-                    <select class="form-select" id="lunaEnd" name="sfarsit" disabled>
+                    <select class="form-select" id="lunaEnd" name="lunaEnd" disabled>
                         <option>Ianuarie</option>
                         <option>Februarie</option>
                         <option>Martie</option>
@@ -178,12 +181,12 @@
             </div>
         </div>
         <div class="col-md-2">
-            <label for="ziua" class="form-label">Zi (0-31):</label>
-            <input type="number" class="form-control" id="ziua" name="zi" min="0" max="31">
+            <label for="zi" class="form-label">Zi (0-31):</label>
+            <input type="number" class="form-control" id="zi" name="zi" min="0" max="31">
         </div>
         <div class="col-md-3">
-            <label for="ora" class="form-label">Ora plecare:</label>
-            <input type="time" class="form-control" id="ora" name="oraPlecare">
+            <label for="oraPlecare" class="form-label">Ora plecare:</label>
+            <input type="time" class="form-control" id="oraPlecare" name="oraPlecare">
         </div>
         <div class="col-md-12">
             <label for="discount" class="form-label">Discount:</label>
