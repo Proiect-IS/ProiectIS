@@ -4,28 +4,28 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Zbor_Regulat extends Zbor {
-    private LocalDate ziua;
-    private LocalTime ora;
+    private String ziua;
+    private String ora;
 
-    public Zbor_Regulat(String cod_cursa, Tip_Zbor tip_zbor, String oras_destinatie, String oras_plecare, Tarife tarife, Avion avion, boolean esteTurRetur, int discount, LocalDate ziua, LocalTime ora) {
-        super(cod_cursa, tip_zbor, oras_destinatie, oras_plecare, tarife, avion, esteTurRetur, discount);
+    public Zbor_Regulat(String cod_cursa, Tip_Zbor tip_zbor, String oras_destinatie, String oras_plecare, int tarifeBusiness, int tarifeClasa1, int tarifeEconomie, Avion avion, boolean esteTurRetur, int discount, String ziua, String ora) {
+        super(cod_cursa, tip_zbor, oras_destinatie, oras_plecare, tarifeBusiness, tarifeClasa1, tarifeEconomie, avion, esteTurRetur, discount);
         this.ziua = ziua;
         this.ora = ora;
     }
 
-    public LocalDate getZiua() {
+    public String getZiua() {
         return ziua;
     }
 
-    public void setZiua(LocalDate ziua) {
+    public void setZiua(String ziua) {
         this.ziua = ziua;
     }
 
-    public LocalTime getOra() {
+    public String getOra() {
         return ora;
     }
 
-    public void setOra(LocalTime ora) {
+    public void setOra(String ora) {
         this.ora = ora;
     }
 }

@@ -5,17 +5,21 @@ public class Zbor {
     private Tip_Zbor tip_zbor;
     private String oras_destinatie;
     private String oras_plecare;
-    private Tarife tarife;
+    private int tarifeBusiness;
+    private int tarifeClasa1;
+    private int tarifeEconomie;
     private Avion avion;
     private boolean esteTurRetur;
     private int discount;
 
-    public Zbor(String cod_cursa, Tip_Zbor tip_zbor, String oras_destinatie, String oras_plecare, Tarife tarife, Avion avion, boolean esteTurRetur, int discount) {
+    public Zbor(String cod_cursa, Tip_Zbor tip_zbor, String oras_destinatie, String oras_plecare, int tarifeBusiness, int tarifeClasa1, int tarifeEconomie, Avion avion, boolean esteTurRetur, int discount) {
         this.cod_cursa = cod_cursa;
         this.tip_zbor = tip_zbor;
         this.oras_destinatie = oras_destinatie;
         this.oras_plecare = oras_plecare;
-        this.tarife = tarife;
+        this.tarifeBusiness = tarifeBusiness;
+        this.tarifeClasa1 = tarifeClasa1;
+        this.tarifeEconomie = tarifeEconomie;
         this.avion = avion;
         this.esteTurRetur = esteTurRetur;
         this.discount = discount;
@@ -53,12 +57,28 @@ public class Zbor {
         this.oras_plecare = oras_plecare;
     }
 
-    public Tarife getTarife() {
-        return tarife;
+    public int getTarifeBusiness() {
+        return tarifeBusiness;
     }
 
-    public void setTarife(Tarife tarife) {
-        this.tarife = tarife;
+    public void setTarifeBusiness(int tarifeBusiness) {
+        this.tarifeBusiness = tarifeBusiness;
+    }
+
+    public int getTarifeClasa1() {
+        return tarifeClasa1;
+    }
+
+    public void setTarifeClasa1(int tarifeClasa1) {
+        this.tarifeClasa1 = tarifeClasa1;
+    }
+
+    public int getTarifeEconomie() {
+        return tarifeEconomie;
+    }
+
+    public void setTarifeEconomie(int tarifeEconomie) {
+        this.tarifeEconomie = tarifeEconomie;
     }
 
     public Avion getAvion() {
@@ -84,5 +104,4 @@ public class Zbor {
     public void setDiscount(int discount) {
         this.discount = discount;
     }
-
 }
