@@ -7,8 +7,8 @@ public class Zbor_Regulat extends Zbor {
     private LocalDate ziua;
     private LocalTime ora;
 
-    public Zbor_Regulat(String cod_cursa, Tip_Zbor tip_zbor, String oras_destinatie, String oras_plecare, Tarife tarife, Avion avion, boolean esteTurRetur, LocalDate ziua, LocalTime ora) {
-        super(cod_cursa, tip_zbor, oras_destinatie, oras_plecare, tarife, avion, esteTurRetur);
+    public Zbor_Regulat(String cod_cursa, Tip_Zbor tip_zbor, String oras_destinatie, String oras_plecare, Tarife tarife, Avion avion, boolean esteTurRetur, int discount, LocalDate ziua, LocalTime ora) {
+        super(cod_cursa, tip_zbor, oras_destinatie, oras_plecare, tarife, avion, esteTurRetur, discount);
         this.ziua = ziua;
         this.ora = ora;
     }
