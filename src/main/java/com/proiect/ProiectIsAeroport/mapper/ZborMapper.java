@@ -13,7 +13,7 @@ public class ZborMapper {
         Avion avion = new Avion(Model.valueOf(String.valueOf(zborDto.model)));
         LocalDate ziua = zborDto.ziua;
         LocalTime ora = zborDto.ora;
-        Tip_Zbor tip_zbor = Tip_Zbor.valueOf(String.valueOf(zborDto.tipZbor));
+        Tip_Zbor tip_zbor = Tip_Zbor.valueOf(String.valueOf(zborDto.tipZbor).toUpperCase());
         LocalDate inceput= zborDto.inceput;
         LocalDate sfarsit=zborDto.sfarit;
 
