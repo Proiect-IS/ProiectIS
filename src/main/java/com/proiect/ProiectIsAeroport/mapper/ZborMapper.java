@@ -9,7 +9,7 @@ import java.time.LocalTime;
 public class ZborMapper {
     public static Zbor convertesteDTOinZbor(ZborDto zborDto)
     {
-        Avion avion = new Avion(Model.valueOf(String.valueOf(zborDto.modelAvion)));
+        Avion avion = new Avion(Model.valueOf(String.valueOf(zborDto.modelAvion).toUpperCase()));
         Tip_Zbor tip_zbor = Tip_Zbor.valueOf(String.valueOf(zborDto.tipZbor).toUpperCase());
         return switch (tip_zbor)
         {
