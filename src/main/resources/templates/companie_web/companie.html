@@ -13,10 +13,44 @@
         <h1 class="nav-bar-text">DareSky</h1>
         <img th:src="@{/images/avion.png}" alt="Logo">
     </div>
-    <button>
-        <img th:src="@{/images/persoana.png}" alt="Person" width="40" height="40">
-    </button>
+    <button class="btn">Deconectare</button>
     <button type="button" class="btn" onclick="window.location.href='adaugareZbor'">Adaugare zbor</button>
 </div>
+
+<!cardul>
+
+<div class="container">
+    <div class="card" th:each="zbor : ${zboruri}">
+        <div class="status">
+            Status: <span th:text="${zbor.tipZbor.toUpperCase()}"></span> -
+            <span th:text="${zbor.ocupate lt zbor.totale ? 'Disponibil' : 'Indisponibil'}"></span>
+        </div>
+        <div class="header">
+            <div th:text="'Zbor ' + ${zbor.tipZbor}"></div>
+            <div th:text="${zbor.ocupate lt zbor.totale ? 'Locuri disponibile' : 'Complet ocupat'}"></div>
+        </div>
+        <div class="info">
+            <div class="column">
+                <div><span class="label">Cod cursă:</span> <span th:text="${zbor.cod}"></span></div>
+                <div><span class="label">Model avion:</span> <span th:text="${zbor.model}"></span></div>
+                <div><span class="label">Zi plecare:</span> <span th:text="${zbor.zi}"></span></div>
+                <div><span class="label">Ora plecare:</span> <span th:text="${zbor.ora}"></span></div>
+                <div><span class="label">Oraș plecare:</span> <span th:text="${zbor.plecare}"></span></div>
+                <div><span class="label">Destinație:</span> <span th:text="${zbor.destinatie}"></span></div>
+            </div>
+            <div class="column" style="text-align: right;">
+                <div><span class="label">Eco class:</span> <span th:text="${zbor.eco}"></span></div>
+                <div><span class="label">Business class:</span> <span th:text="${zbor.business}"></span></div>
+                <div><span class="label">First class:</span> <span th:text="${zbor.first}"></span></div>
+                <div><span class="label">Locuri ocupate/totale:</span> <span th:text="${zbor.ocupate + '/' + zbor.totale}"></span></div>
+                <div><span class="label">Preț Eco:</span> <span th:text="${zbor.pretEco}"></span> lei</div>
+                <div><span class="label">Preț Business:</span> <span th:text="${zbor.pretBusiness}"></span> lei</div>
+                <div><span class="label">Preț First:</span> <span th:text="${zbor.pretFirst}"></span> lei</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 </body>
 </html>
