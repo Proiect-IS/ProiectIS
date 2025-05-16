@@ -1,12 +1,14 @@
 package com.proiect.ProiectIsAeroport.companie;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+@JsonTypeName("SEZONIER")
 public class Zbor_Sezonier extends Zbor_Regulat {
     private String inceput;
     private String sfarsit;
-
 
     public Zbor_Sezonier() {
         super();
@@ -32,5 +34,10 @@ public class Zbor_Sezonier extends Zbor_Regulat {
 
     public void setSfarsit(String sfarsit) {
         this.sfarsit = sfarsit;
+    }
+
+    @Override
+    public String getType() {
+        return "SEZONIER";
     }
 }

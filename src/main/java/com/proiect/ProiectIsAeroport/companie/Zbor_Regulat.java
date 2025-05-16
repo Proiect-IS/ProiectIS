@@ -1,39 +1,48 @@
 package com.proiect.ProiectIsAeroport.companie;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+@JsonTypeName("REGULAT")
 public class Zbor_Regulat extends Zbor {
     private String zi;
-    private String ora;
+    private String oraPlecare;
 
     public Zbor_Regulat() {
         super();
     }
 
-    public Zbor_Regulat(String cod_cursa, Tip_Zbor tip_zbor, String oras_destinatie, String oras_plecare, int tarifeBusiness, int tarifeClasa1, int tarifeEconomie, Model model, int locuriBusiness, int locuriClasa1, int locuriEconomie, boolean esteTurRetur, int discount, String ziua, String ora) {
+    public Zbor_Regulat(String cod_cursa, Tip_Zbor tip_zbor, String oras_destinatie, String oras_plecare, int tarifeBusiness, int tarifeClasa1, int tarifeEconomie, Model model, int locuriBusiness, int locuriClasa1, int locuriEconomie, boolean esteTurRetur, int discount, String zi, String ora) {
         super(cod_cursa, tip_zbor, oras_destinatie, oras_plecare, tarifeBusiness, tarifeClasa1, tarifeEconomie, model, locuriBusiness, locuriClasa1, locuriEconomie, esteTurRetur, discount);
         this.zi = zi;
-        this.ora = ora;
+        this.oraPlecare = ora;
     }
 
-    @JsonProperty("ziua")
+    @JsonProperty("zi")
     public String getZiua() {
         return zi;
     }
 
-    @JsonProperty("ziua")
+    @JsonProperty("zi")
     public void setZiua(String ziua) {
         this.zi = ziua;
     }
 
-    public String getOra() {
-        return ora;
+    @JsonProperty("oraPlecare")
+    public String getOraPlecare() {
+        return oraPlecare;
     }
 
-    public void setOra(String ora) {
-        this.ora = ora;
+    @JsonProperty("oraPlecare")
+    public void setOraPlecare(String oraPlecare) {
+        this.oraPlecare = oraPlecare;
+    }
+
+    @Override
+    public String getType() {
+        return "REGULAT";
     }
 }

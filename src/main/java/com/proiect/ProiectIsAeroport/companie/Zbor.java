@@ -1,7 +1,17 @@
 package com.proiect.ProiectIsAeroport.companie;
 
 
-public class Zbor {
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type") // Adăugăm această adnotare la clasa de bază
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Zbor_Regulat.class, name = "REGULAT"),
+        @JsonSubTypes.Type(value = Zbor_Sezonier.class, name = "SEZONIER")
+})
+public abstract class Zbor {
     private String cod_cursa;
     private Tip_Zbor tip_zbor;
     private String oras_destinatie;
@@ -142,4 +152,6 @@ public class Zbor {
     {
         return locuriBusiness+locuriClasa1+locuriEconomie+locuriBusiness;
     }
+
+    public abstract String getType();
 }
