@@ -22,9 +22,10 @@ public class CompanieController {
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final File zboruriFile = new File("src/main/resources/zboruri.json");
     public CompanieController() {
-         try {
+        try {
             if (zboruriFile.exists()) {
-                if (zboruriFile.length() > 0) { // Check if the file is not empty
+                if (zboruriFile.length() > 0) {
+                    objectMapper.registerSubtypes(Zbor_Regulat.class, Zbor_Sezonier.class);
                     zboruri = objectMapper.readValue(zboruriFile, new TypeReference<List<Zbor>>() {});
                 } else {
                     zboruri = new ArrayList<>();
@@ -40,24 +41,24 @@ public class CompanieController {
 
     @GetMapping("/companie")
     public String home(org.springframework.ui.Model model) {
-//        List<Zbor_Regulat> zboruriRegulate = new ArrayList<>();
-//        List<Zbor_Sezonier> zboruriSezoniere = new ArrayList<>();
-//        List<Zbor> zboruriBase = new ArrayList<>(); //Lista pentru Zbor
-//
-//        for (Zbor zbor : zboruri) {
-//            if (zbor instanceof Zbor_Sezonier) {
-//                zboruriSezoniere.add((Zbor_Sezonier) zbor);
-//            } else if (zbor instanceof Zbor_Regulat) {
-//                zboruriRegulate.add((Zbor_Regulat) zbor);
-//            } else {
-//                zboruriBase.add(zbor);
-//            }
-//        }
-//
-//        model.addAttribute("zboruriRegulate", zboruriRegulate);
-//        model.addAttribute("zboruriSezoniere", zboruriSezoniere);
-//        model.addAttribute("zboruriBase", zboruriBase); //Adaugam si lista de zboruri de baza
-//        System.out.println(zboruriBase);
+        List<Zbor_Regulat> zboruriRegulate = new ArrayList<>();
+        List<Zbor_Sezonier> zboruriSezoniere = new ArrayList<>();
+        List<Zbor> zboruriBase = new ArrayList<>(); //Lista pentru Zbor
+
+        for (Zbor zbor : zboruri) {
+            if (zbor instanceof Zbor_Sezonier) {
+                zboruriSezoniere.add((Zbor_Sezonier) zbor);
+            } else if (zbor instanceof Zbor_Regulat) {
+                zboruriRegulate.add((Zbor_Regulat) zbor);
+            } else {
+                zboruriBase.add(zbor);
+            }
+        }
+
+        model.addAttribute("zboruriRegulate", zboruriRegulate);
+        model.addAttribute("zboruriSezoniere", zboruriSezoniere);
+        model.addAttribute("zboruriBase", zboruriBase); //Adaugam si lista de zboruri de baza
+        System.out.println(zboruriBase);
         return "companie_web/companie";
     }
 }
