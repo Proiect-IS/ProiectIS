@@ -1,5 +1,6 @@
 package com.proiect.ProiectIsAeroport.companie;
 
+
 public class Zbor {
     private String cod_cursa;
     private Tip_Zbor tip_zbor;

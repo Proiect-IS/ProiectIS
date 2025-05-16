@@ -71,8 +71,6 @@ public class SerializareController {
             // Momentan setăm esteTurRetur la false și discount la valoarea din form
             boolean esteTurRetur = false;
             int discount = Integer.parseInt(formData.get("discount"));
-
-
             Zbor zbor;
 
             if (tipZbor == Tip_Zbor.REGULAT) {
@@ -88,8 +86,6 @@ public class SerializareController {
             } else {
                 return new ResponseEntity<>("Eroare: Tip de zbor necunoscut.", HttpStatus.BAD_REQUEST);
             }
-
-
             zboruri.add(zbor);
             scriere(zboruri);
 
