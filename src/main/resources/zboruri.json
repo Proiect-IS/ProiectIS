@@ -58,5 +58,24 @@
     "locuriEconomie": 133,
     "esteTurRetur": false,
     "discount": 0
+  },
+  {
+    "cod_cursa": "BHOK",
+    "tip_zbor": "SEZONIER",
+    "oras_destinatie": "Bacau",
+    "oras_plecare": "Oradea",
+    "tarifeBusiness": 1001,
+    "tarifeClasa1": 1000,
+    "tarifeEconomie": 1002,
+    "model": "MODEL1",
+    "locuriBusiness": 34,
+    "locuriClasa1": 12,
+    "locuriEconomie": 45,
+    "esteTurRetur": false,
+    "discount": 0,
+    "ziua": "10",
+    "ora": "11:11",
+    "inceput": "Mai",
+    "sfarsit": "Septembrie"
   }
 ]

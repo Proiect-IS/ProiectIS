@@ -2,9 +2,7 @@ package com.proiect.ProiectIsAeroport.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.proiect.ProiectIsAeroport.companie.Model;
-import com.proiect.ProiectIsAeroport.companie.Tip_Zbor;
-import com.proiect.ProiectIsAeroport.companie.Zbor;
+import com.proiect.ProiectIsAeroport.companie.*;
 import com.proiect.ProiectIsAeroport.dto.ZborDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -73,12 +71,25 @@ public class SerializareController {
             // Momentan setăm esteTurRetur la false și discount la valoarea din form
             boolean esteTurRetur = false;
             int discount = Integer.parseInt(formData.get("discount"));
-            String zi = formData.get("zi");
-            String oraPlecare = formData.get("oraPlecare");
-            String lunaStart = formData.get("lunaStart");
-            String lunaEnd = formData.get("lunaEnd");
 
-            Zbor zbor = new Zbor(codCursa, tipZbor, rutaDestinatie, rutaPlecare, pretBusiness, pretClasa1, pretEconomie, modelAvion, locuriBusiness, locuriClasa1, locuriEconomie, esteTurRetur, discount);
+
+            Zbor zbor;
+
+            if (tipZbor == Tip_Zbor.REGULAT) {
+                String zi = formData.get("zi");
+                String oraPlecare = formData.get("oraPlecare");
+                zbor = new Zbor_Regulat(codCursa, tipZbor, rutaDestinatie, rutaPlecare, pretBusiness, pretClasa1, pretEconomie, modelAvion, locuriBusiness, locuriClasa1, locuriEconomie, esteTurRetur, discount, zi, oraPlecare);
+            } else if (tipZbor == Tip_Zbor.SEZONIER) {
+                String zi = formData.get("zi");
+                String oraPlecare = formData.get("oraPlecare");
+                String lunaStart = formData.get("lunaStart");
+                String lunaEnd = formData.get("lunaEnd");
+                zbor = new Zbor_Sezonier(codCursa, tipZbor, rutaDestinatie, rutaPlecare, pretBusiness, pretClasa1, pretEconomie, modelAvion, locuriBusiness, locuriClasa1, locuriEconomie, esteTurRetur, discount,zi,oraPlecare,lunaStart, lunaEnd);
+            } else {
+                return new ResponseEntity<>("Eroare: Tip de zbor necunoscut.", HttpStatus.BAD_REQUEST);
+            }
+
+
             zboruri.add(zbor);
             scriere(zboruri);
 
