@@ -57,7 +57,7 @@ public class CompanieController {
 
         model.addAttribute("zboruriRegulate", zboruriRegulate);
         model.addAttribute("zboruriSezoniere", zboruriSezoniere);
-        model.addAttribute("zboruriBase", zboruriBase); //Adaugam si lista de zboruri de baza
+        model.addAttribute("zboruriBase", zboruriBase);
         System.out.println(zboruriBase);
         return "companie_web/companie";
     }

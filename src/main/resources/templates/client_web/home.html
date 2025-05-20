@@ -17,6 +17,80 @@
     <div style="padding-right: 40px">
         <button type="button" class="btn" onclick="window.location.href='login'">Login</button>
     </div>
+
 </div>
+<div class="container mx-auto px-4 py-10">
+    <form action="/" method="GET" class="bg-white rounded-lg shadow-md p-8">
+        <h1 class="text-3xl font-semibold text-blue-600 mb-6">Compară și rezervă zboruri ieftine cu ușurință</h1>
+        <p class="text-gray-700 mb-4">Descoperă-ți următoarea destinație de vis</p>
+
+        <div class="flex items-center mb-6">
+            <label class="flex items-center mr-2">
+                <input type="radio" name="tip_zbor" value="true" class="mr-2 text-blue-500 focus:ring-blue-500" checked>
+                <span class="text-gray-700">Dus-întors</span>
+            </label>
+            <label class="flex items-center">
+                <input type="radio" name="tip_zbor" value="false" class="mr-2 text-blue-500 focus:ring-blue-500">
+                <span class="text-gray-700">Doar dus</span>
+            </label>
+        </div>
+
+        <div class="flex flex-wrap gap-4 items-end">
+            <div class="flex-1 min-w-[200px]">
+                <label for="plecare" class="block text-sm font-medium text-gray-700">De unde?</label>
+                <div class="mt-1 relative rounded-md shadow-sm">
+                    <input type="text" id="plecare" name="plecare" placeholder="TSR Timișoara Traian Vuia Inter..."
+                           class="form-input w-full rounded-md border-gray-300 focus:ring-blue-500 focus:border-blue-500">
+                </div>
+            </div>
+
+            <div class="flex-1 min-w-[200px]">
+                <label for="destinatie" class="block text-sm font-medium text-gray-700">Unde?</label>
+                <div class="mt-1 relative rounded-md shadow-sm">
+                    <input type="text" id="destinatie" name="destinatie" placeholder="Adaugă un aeroport sau un oraș"
+                           class="form-input w-full rounded-md border-gray-300 focus:ring-blue-500 focus:border-blue-500">
+                </div>
+            </div>
+
+            <div class="mt-6">
+                <button type="submit"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-semibold rounded-md py-2.5 px-6 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                    Caută
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container-gasite">
+    <div th:if="${zboruriCautare != null and !zboruriCautare.isEmpty()}">
+        <h3>Zboruri gasite:</h3>
+        <div class="card" th:each="zbor : ${zboruriCautare}">
+            <div class="status">
+                Tip zbor: <span th:text="${zbor.getTip_zbor()}"></span>
+            </div>
+            <div class="info">
+                <div class="column">
+                    <div><span class="label">Cod cursă:</span> <span th:text="${zbor.cod_cursa}"></span></div>
+                    <div><span class="label">Model avion:</span> <span th:text="${zbor.model}"></span></div>
+                    <div><span class="label">Zi plecare:</span> <span th:text="${zbor.ziua}"></span></div>
+                    <div><span class="label">Ora plecare:</span> <span th:text="${zbor.oraPlecare}"></span></div>
+                    <div><span class="label">Oraș plecare:</span> <span th:text="${zbor.oras_plecare}"></span></div>
+                    <div><span class="label">Destinație:</span> <span th:text="${zbor.oras_destinatie}"></span></div>
+                </div>
+                <div class="column" style="text-align: right;">
+                    <div><span class="label">Eco class:</span> <span th:text="${zbor.locuriEconomie}"></span></div>
+                    <div><span class="label">Business class:</span> <span th:text="${zbor.locuriBusiness}"></span></div>
+                    <div><span class="label">First class:</span> <span th:text="${zbor.locuriClasa1}"></span></div>
+                    <div><span class="label">Preț Eco:</span> <span th:text="${zbor.tarifeEconomie}"></span> lei</div>
+                    <div><span class="label">Preț Business:</span> <span th:text="${zbor.tarifeBusiness}"></span> lei</div>
+                    <div><span class="label">Preț First:</span> <span th:text="${zbor.tarifeClasa1}"></span> lei</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 </body>
 </html>

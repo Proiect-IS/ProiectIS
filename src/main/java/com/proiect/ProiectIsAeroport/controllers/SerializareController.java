@@ -93,7 +93,7 @@ public class SerializareController {
                 }
             }
 
-            existingZboruri.add(zbor); // Adăugăm zborul nou la lista existentă
+            existingZboruri.add(zbor);
             scriere(existingZboruri);
             return new ResponseEntity<>("Zbor salvat cu succes!", HttpStatus.OK);
         } catch (IllegalArgumentException e) {
