@@ -142,3 +142,17 @@
     flex-direction: column;
     gap: 10px;
 }
+
+.btn-danger.btn-sm {
+    padding: 0.25rem 0.5rem; /* Ajustează padding-ul pentru a fi mai mic */
+    font-size: 0.75rem; /* Ajustează dimensiunea fontului (dacă ai text) */
+    line-height: 1.5;
+    border-radius: 0.2rem; /* Menține sau ajustează rotunjirea bordurii */
+    margin-left: 5px; /* Adaugă puțin spațiu între text și buton */
+}
+
+.btn-danger.btn-sm svg {
+    width: 1em; /* Asigură că iconița are o dimensiune relativă la font */
+    height: 1em;
+    vertical-align: middle; /* Aliniază iconița pe verticală cu textul (dacă ai) */
+}

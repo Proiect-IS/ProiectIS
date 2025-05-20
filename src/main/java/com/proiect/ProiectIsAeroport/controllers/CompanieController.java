@@ -42,7 +42,7 @@ public class CompanieController {
     }
 
     @PostMapping("/stergeZbor")
-    public void StergereZbor(@RequestParam ("cod_cursa") String cod_cursa){
+    public String StergereZbor(@RequestParam("codCursa") String cod_cursa){
         zboruri.removeIf(zbor -> zbor.getCod_cursa().equals(cod_cursa));
 
         // Salvează lista actualizată în fișier
@@ -51,8 +51,8 @@ public class CompanieController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return "redirect:/companie";
     }
-
 
     @GetMapping("/companie")
     public String home(org.springframework.ui.Model model) {
