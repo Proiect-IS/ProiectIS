@@ -43,8 +43,8 @@ public class HomeController {
     public List<Zbor> FindZbor(@RequestParam("plecare") String oras_plecare, @RequestParam("destinatie") String oras_destinatie, @RequestParam("tip_zbor") boolean esteTurRetur) {
         List<Zbor> zborList = zboruri
                 .stream()
-                .filter(p -> p.getOras_plecare().equals(oras_plecare))
-                .filter(p -> p.getOras_destinatie().equals(oras_destinatie))
+                .filter(p -> p.getOras_plecare().equalsIgnoreCase(oras_plecare))
+                .filter(p -> p.getOras_destinatie().equalsIgnoreCase(oras_destinatie))
                 .filter(p -> p.isEsteTurRetur() == esteTurRetur)
                 .collect(Collectors.toList());
         if (zborList.size() == 0) {
