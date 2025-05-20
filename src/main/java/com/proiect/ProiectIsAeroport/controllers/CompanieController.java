@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -39,6 +40,8 @@ public class CompanieController {
             zboruri = new ArrayList<>();
         }
     }
+
+    @PostMapping("/stergeZbor")
     public void StergereZbor(@RequestParam ("cod_cursa") String cod_cursa){
         zboruri.removeIf(zbor -> zbor.getCod_cursa().equals(cod_cursa));
 
