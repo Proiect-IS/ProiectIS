@@ -1,0 +1,15 @@
+[
+  {
+    "codCursa": "B2",
+    "numePasager": "Simoc David",
+    "telefon": "0773886961",
+    "nrAdulti": 1,
+    "nrCopii": 0,
+    "nrSeniori": 0,
+    "masaInclusa": true,
+    "bagajSuplimentar": true,
+    "clasa": "business",
+    "turRetur": true,
+    "plataCuCard": true
+  }
+]
