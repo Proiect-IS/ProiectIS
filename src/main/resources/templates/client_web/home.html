@@ -69,9 +69,8 @@
         </div>
         <form th:action="@{/detaliiZbor}" method="get">
             <input type="hidden" name="codCursa" th:value="${zbor.cod_cursa}">
-            <input type="hidden" name="pretEco" th:value="${zbor.tarifeEconomie}">
-            <input type="hidden" name="pretBusiness" th:value="${zbor.tarifeBusiness}">
-            <input type="hidden" name="pretFirst" th:value="${zbor.tarifeClasa1}">
+            <input type="hidden" name="ziua" th:value="${zbor.ziua}">
+            <input type="hidden" name="oraPlecare" th:value="${zbor.oraPlecare}">
             <button type="submit" class="btn btn-outline-primary btn-sm">Rezervă zbor</button>
         </form>
     </div>

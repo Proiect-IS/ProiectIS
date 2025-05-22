@@ -88,8 +88,9 @@ public class HomeController {
                               org.springframework.ui.Model model) {
 
         Zbor zborSelectat = findZborByCodCursa(codCursa);
-        LocalDate data = LocalDate.parse(ziua); // dacă nu e așa, zi-mi ce format e
-        LocalTime ora = LocalTime.parse(oraPlecare); // format HH:mm
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy"); // Exemplu de format
+        LocalDate data = LocalDate.parse(ziua, dateFormatter);
+        LocalTime ora = LocalTime.parse(oraPlecare, DateTimeFormatter.ofPattern("HH:mm"));
         LocalDateTime dataOraPlecare = LocalDateTime.of(data, ora);
         LocalDateTime acum = LocalDateTime.now();
         if(Duration.between(acum, dataOraPlecare).toHours() < 48 && dataOraPlecare.isAfter(acum))
