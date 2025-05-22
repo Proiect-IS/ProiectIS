@@ -62,31 +62,44 @@
     </form>
 </div>
 
-<div class="container-gasite">
-    <div th:if="${zboruriCautare != null and !zboruriCautare.isEmpty()}">
-        <h3>Zboruri gasite:</h3>
-        <div class="card" th:each="zbor : ${zboruriCautare}">
-            <div class="status">
-                Tip zbor: <span th:text="${zbor.getTip_zbor()}"></span>
-            </div>
-            <div class="info">
-                <div class="column">
-                    <div><span class="label">Cod cursă:</span> <span th:text="${zbor.cod_cursa}"></span></div>
-                    <div><span class="label">Model avion:</span> <span th:text="${zbor.model}"></span></div>
-                    <div><span class="label">Zi plecare:</span> <span th:text="${zbor.ziua}"></span></div>
-                    <div><span class="label">Ora plecare:</span> <span th:text="${zbor.oraPlecare}"></span></div>
-                    <div><span class="label">Oraș plecare:</span> <span th:text="${zbor.oras_plecare}"></span></div>
-                    <div><span class="label">Destinație:</span> <span th:text="${zbor.oras_destinatie}"></span></div>
-                </div>
-                <div class="column" style="text-align: right;">
-                    <div><span class="label">Eco class:</span> <span th:text="${zbor.locuriEconomie}"></span></div>
-                    <div><span class="label">Business class:</span> <span th:text="${zbor.locuriBusiness}"></span></div>
-                    <div><span class="label">First class:</span> <span th:text="${zbor.locuriClasa1}"></span></div>
-                    <div><span class="label">Preț Eco:</span> <span th:text="${zbor.tarifeEconomie}"></span> lei</div>
-                    <div><span class="label">Preț Business:</span> <span th:text="${zbor.tarifeBusiness}"></span> lei</div>
-                    <div><span class="label">Preț First:</span> <span th:text="${zbor.tarifeClasa1}"></span> lei</div>
-                </div>
-            </div>
+<div class="card" th:each="zbor : ${zboruriCautare}">
+    <div class="status">
+        Tip zbor: <span th:text="${zbor.getTip_zbor()}"></span>
+    </div>
+    <div class="destinatie-info">
+        <div class="plecare">
+            <span class="label">De la:</span> <span th:text="${zbor.oras_plecare}"></span>
+        </div>
+        <span class="sageata">&rarr;</span>
+        <div class="sosire">
+            <span class="label">Către:</span> <span th:text="${zbor.oras_destinatie}"></span>
+        </div>
+    </div>
+    <div class="info">
+        <div>
+            <div><span class="label">Cod cursă:</span> <span class="cod-cursa" th:text="${zbor.cod_cursa}"></span></div>
+            <div><span class="label">Model avion:</span> <span th:text="${zbor.model}"></span></div>
+            <div><span class="label">Zi plecare:</span> <span th:text="${zbor.ziua}"></span></div>
+            <div><span class="label">Ora plecare:</span> <span th:text="${zbor.oraPlecare}"></span></div>
+        </div>
+        <div style="text-align: right;">
+            <div><span class="label">Eco:</span> <span th:text="${zbor.locuriEconomie}"></span> locuri</div>
+            <div><span class="label">Business:</span> <span th:text="${zbor.locuriBusiness}"></span> locuri</div>
+            <div><span class="label">First:</span> <span th:text="${zbor.locuriClasa1}"></span> locuri</div>
+        </div>
+    </div>
+    <div class="preturi">
+        <div class="pret">
+            <div class="pret-label">Eco</div>
+            <div class="pret-valoare" th:text="${zbor.tarifeEconomie} + ' lei'"></div>
+        </div>
+        <div class="pret">
+            <div class="pret-label">Business</div>
+            <div class="pret-valoare" th:text="${zbor.tarifeBusiness} + ' lei'"></div>
+        </div>
+        <div class="pret">
+            <div class="pret-label">First</div>
+            <div class="pret-valoare" th:text="${zbor.tarifeClasa1} + ' lei'"></div>
         </div>
     </div>
 </div>
