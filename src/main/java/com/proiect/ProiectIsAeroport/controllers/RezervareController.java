@@ -51,16 +51,16 @@ public class RezervareController {
                                   @RequestParam(value = "masaInclusa", required = false) boolean masaInclusa,
                                   @RequestParam(value = "bagajSuplimentar", required = false) boolean bagajSuplimentar,
                                   @RequestParam("clasa") String clasa,
-                                  @RequestParam("esteTurRetu") boolean turRetur,
+                                  @RequestParam("esteTurRetur") boolean turRetur,
                                   @RequestParam("metodaPlata") String plataCuCard,
                                   org.springframework.ui.Model model) {
         boolean plata;
         if(plataCuCard.equals("cash")) {
             plata=false;
         }else plata=true;
-        Rezervare reezervare=new Rezervare(codCursa,nume,telefon,nrAdulti,nrCopii,nrSeniori,masaInclusa,bagajSuplimentar,clasa,turRetur,plata);
+        Rezervare rezervare=new Rezervare(codCursa,nume,telefon,nrAdulti,nrCopii,nrSeniori,masaInclusa,bagajSuplimentar,clasa,turRetur,plata);
 
-
+        salveazaRezervari();
 
         model.addAttribute("mesajRezervare", "Rezervarea a fost înregistrată cu succes!");
         return "client_web/confirmareRezervare";
