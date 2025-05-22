@@ -40,13 +40,28 @@ public class RezervareController {
         }
     }
 
-    // ✅ Adaugă o rezervare
+
     @PostMapping("/adauga")
-    @ResponseBody
-    public String adaugaRezervare(@RequestBody Rezervare rezervare) {
-        rezervari.add(rezervare);
-        salveazaRezervari();
-        return "Rezervare salvată cu succes.";
+    public String adaugaRezervare(@RequestParam("codCursa") String codCursa,
+                                  @RequestParam("nume") String nume,
+                                  @RequestParam("telefon") String telefon,
+                                  @RequestParam("adulti") int nrAdulti,
+                                  @RequestParam("copii") int nrCopii,
+                                  @RequestParam("seniori") int nrSeniori,
+                                  @RequestParam(value = "masaInclusa", required = false) boolean masaInclusa,
+                                  @RequestParam(value = "bagajSuplimentar", required = false) boolean bagajSuplimentar,
+                                  @RequestParam("clasa") String clasa,
+                                  @RequestParam("metodaPlata") String plataCuCard,
+                                  org.springframework.ui.Model model) {
+        boolean plata;
+        if(plataCuCard.equals("cash")) {
+            plata=false;
+        }else plata=true;
+
+
+
+        model.addAttribute("mesajRezervare", "Rezervarea a fost înregistrată cu succes!");
+        return "client_web/confirmareRezervare";
     }
 
     // ✅ Afișează toate rezervările

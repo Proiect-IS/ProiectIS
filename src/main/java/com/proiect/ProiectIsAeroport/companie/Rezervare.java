@@ -1,7 +1,6 @@
 package com.proiect.ProiectIsAeroport.companie;
 
 public class Rezervare {
-    private String codRezervare;
     private String codCursa;
     private String numePasager;
     private String telefon;
@@ -17,8 +16,7 @@ public class Rezervare {
     public Rezervare() {
     }
 
-    public Rezervare(String codRezervare, String codCursa, String numePasager, String telefon, int nrAdulti, int nrCopii, int nrSeniori, boolean masaInclusa, boolean bagajSuplimentar, String clasa, boolean turRetur, boolean plataCuCard) {
-        this.codRezervare = codRezervare;
+    public Rezervare(String codCursa, String numePasager, String telefon, int nrAdulti, int nrCopii, int nrSeniori, boolean masaInclusa, boolean bagajSuplimentar, String clasa, boolean turRetur, boolean plataCuCard) {
         this.codCursa = codCursa;
         this.numePasager = numePasager;
         this.telefon = telefon;
@@ -30,14 +28,6 @@ public class Rezervare {
         this.clasa = clasa;
         this.turRetur = turRetur;
         this.plataCuCard = plataCuCard;
-    }
-
-    public String getCodRezervare() {
-        return codRezervare;
-    }
-
-    public void setCodRezervare(String codRezervare) {
-        this.codRezervare = codRezervare;
     }
 
     public String getCodCursa() {
