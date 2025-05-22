@@ -12,6 +12,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -57,9 +58,9 @@ public class SerializareController {
             Tip_Zbor tipZbor = Tip_Zbor.valueOf(formData.get("tipZbor").toUpperCase());
             String rutaPlecare = formData.get("rutaPlecare");
             String rutaDestinatie = formData.get("rutaDestinatie");
-            int pretClasa1 = Integer.parseInt(formData.get("pretClasa1"));
-            int pretBusiness = Integer.parseInt(formData.get("pretClasaBusiness"));
-            int pretEconomie = Integer.parseInt(formData.get("pretClasaEconomie"));
+            double pretClasa1 = Integer.parseInt(formData.get("pretClasa1"));
+            double pretBusiness = Integer.parseInt(formData.get("pretClasaBusiness"));
+            double pretEconomie = Integer.parseInt(formData.get("pretClasaEconomie"));
             Model modelAvion = Model.valueOf(formData.get("modelAvion").toUpperCase());
             int locuriClasa1 = Integer.parseInt(formData.get("locuriClasa1"));
             int locuriBusiness = Integer.parseInt(formData.get("locuriClasaBusiness"));
@@ -67,6 +68,16 @@ public class SerializareController {
             boolean esteTurRetur = "true".equalsIgnoreCase(formData.get("esteTurRetur"));
             int discount = Integer.parseInt(formData.get("discount"));
             Zbor zbor;
+            if(esteTurRetur && discount == 0) {
+                pretClasa1=pretClasa1*0.95;
+                pretBusiness=pretBusiness*0.95;
+                pretEconomie=pretEconomie*0.95;
+            } else if (esteTurRetur && (discount!=0)) {
+                pretClasa1=pretClasa1*(1-(discount/100));
+                pretBusiness=pretBusiness*(1-(discount/100));
+                pretEconomie=pretEconomie*(1-(discount/100));
+            }
+
 
             if (tipZbor == Tip_Zbor.REGULAT) {
                 String zi = formData.get("zi");

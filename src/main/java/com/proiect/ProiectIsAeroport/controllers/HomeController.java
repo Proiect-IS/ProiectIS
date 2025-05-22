@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -77,9 +82,22 @@ public class HomeController {
         return "client_web/home";
     }
     @GetMapping("/detaliiZbor")
-    public String detaliiZbor(@RequestParam("codCursa") String codCursa, org.springframework.ui.Model model) {
-        // ... logica pentru a căuta zborul în baza codului cursei
-        Zbor zborSelectat = findZborByCodCursa(codCursa); // Implementează această metodă
+    public String detaliiZbor(@RequestParam("codCursa") String codCursa,
+                              @RequestParam("ziua") String ziua,
+                              @RequestParam("oraPlecare") String oraPlecare,
+                              org.springframework.ui.Model model) {
+
+        Zbor zborSelectat = findZborByCodCursa(codCursa);
+        LocalDate data = LocalDate.parse(ziua); // dacă nu e așa, zi-mi ce format e
+        LocalTime ora = LocalTime.parse(oraPlecare); // format HH:mm
+        LocalDateTime dataOraPlecare = LocalDateTime.of(data, ora);
+        LocalDateTime acum = LocalDateTime.now();
+        if(Duration.between(acum, dataOraPlecare).toHours() < 48 && dataOraPlecare.isAfter(acum))
+        {
+            zborSelectat.setTarifeBusiness(zborSelectat.getTarifeBusiness()*0.6);
+            zborSelectat.setTarifeClasa1(zborSelectat.getTarifeClasa1()*0.6);
+            zborSelectat.setTarifeEconomie(zborSelectat.getTarifeEconomie()*0.6);
+        }
 
         if (zborSelectat != null) {
             model.addAttribute("zbor", zborSelectat);
@@ -95,4 +113,5 @@ public class HomeController {
                 .findFirst()
                 .orElse(null);
     }
+
 }

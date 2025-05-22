@@ -11,9 +11,9 @@ public class ZborDto {
     public Tip_Zbor tipZbor;
     public String rutaPlecare;
     public String rutaDestinatie;
-    public int pretBusiness;
-    public int pretClasa1;
-    public int pretEconomie;
+    public double pretBusiness;
+    public double pretClasa1;
+    public double pretEconomie;
     public Model modelAvion;
     public int locuriBusiness;
     public int locuriClasa1;

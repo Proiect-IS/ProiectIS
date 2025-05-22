@@ -17,9 +17,9 @@ public abstract class Zbor {
     private Tip_Zbor tip_zbor;
     private String oras_destinatie;
     private String oras_plecare;
-    private int tarifeBusiness;
-    private int tarifeClasa1;
-    private int tarifeEconomie;
+    private double tarifeBusiness;
+    private double tarifeClasa1;
+    private double tarifeEconomie;
     private Model model;
     private int locuriBusiness;
     private int locuriClasa1;
@@ -29,7 +29,7 @@ public abstract class Zbor {
 
     public Zbor() {}
 
-    public Zbor(String cod_cursa, Tip_Zbor tip_zbor, String oras_destinatie, String oras_plecare, int tarifeBusiness, int tarifeClasa1, int tarifeEconomie, Model model, int locuriBusiness, int locuriClasa1, int locuriEconomie, boolean esteTurRetur, int discount) {
+    public Zbor(String cod_cursa, Tip_Zbor tip_zbor, String oras_destinatie, String oras_plecare, double tarifeBusiness, double tarifeClasa1, double tarifeEconomie, Model model, int locuriBusiness, int locuriClasa1, int locuriEconomie, boolean esteTurRetur, int discount) {
         this.cod_cursa = cod_cursa;
         this.tip_zbor = tip_zbor;
         this.oras_destinatie = oras_destinatie;
@@ -77,27 +77,27 @@ public abstract class Zbor {
         this.oras_plecare = oras_plecare;
     }
 
-    public int getTarifeBusiness() {
+    public double getTarifeBusiness() {
         return tarifeBusiness;
     }
 
-    public void setTarifeBusiness(int tarifeBusiness) {
+    public void setTarifeBusiness(double tarifeBusiness) {
         this.tarifeBusiness = tarifeBusiness;
     }
 
-    public int getTarifeClasa1() {
+    public double getTarifeClasa1() {
         return tarifeClasa1;
     }
 
-    public void setTarifeClasa1(int tarifeClasa1) {
+    public void setTarifeClasa1(double tarifeClasa1) {
         this.tarifeClasa1 = tarifeClasa1;
     }
 
-    public int getTarifeEconomie() {
+    public double getTarifeEconomie() {
         return tarifeEconomie;
     }
 
-    public void setTarifeEconomie(int tarifeEconomie) {
+    public void setTarifeEconomie(double tarifeEconomie) {
         this.tarifeEconomie = tarifeEconomie;
     }
 
