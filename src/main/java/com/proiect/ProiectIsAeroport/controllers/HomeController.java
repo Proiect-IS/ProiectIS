@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -88,21 +85,38 @@ public class HomeController {
                               org.springframework.ui.Model model) {
 
         Zbor zborSelectat = findZborByCodCursa(codCursa);
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy"); // Exemplu de format
-        LocalDate data = LocalDate.parse(ziua, dateFormatter);
+        DayOfWeek ziTarget = switch (ziua.toLowerCase()) {
+            case "luni" -> DayOfWeek.MONDAY;
+            case "marti" -> DayOfWeek.TUESDAY;
+            case "miercuri" -> DayOfWeek.WEDNESDAY;
+            case "joi" -> DayOfWeek.THURSDAY;
+            case "vineri" -> DayOfWeek.FRIDAY;
+            case "sambata" -> DayOfWeek.SATURDAY;
+            case "duminica" -> DayOfWeek.SUNDAY;
+            default -> throw new IllegalArgumentException("Zi invalidă: " + ziua);
+        };
+
+        // Parsează ora
         LocalTime ora = LocalTime.parse(oraPlecare, DateTimeFormatter.ofPattern("HH:mm"));
-        LocalDateTime dataOraPlecare = LocalDateTime.of(data, ora);
         LocalDateTime acum = LocalDateTime.now();
-        if(Duration.between(acum, dataOraPlecare).toHours() < 48 && dataOraPlecare.isAfter(acum))
-        {
-            zborSelectat.setTarifeBusiness(zborSelectat.getTarifeBusiness()*0.6);
-            zborSelectat.setTarifeClasa1(zborSelectat.getTarifeClasa1()*0.6);
-            zborSelectat.setTarifeEconomie(zborSelectat.getTarifeEconomie()*0.6);
+
+        // Găsim următoarea zi corespunzătoare zilei primite
+        LocalDate dataPlecare = acum.toLocalDate();
+        while (dataPlecare.getDayOfWeek() != ziTarget) {
+            dataPlecare = dataPlecare.plusDays(1);
         }
 
-        if (zborSelectat != null) {
-            model.addAttribute("zbor", zborSelectat);
-            return "client_web/detaliiZbor";
+        LocalDateTime dataOraPlecare = LocalDateTime.of(dataPlecare, ora);
+
+        boolean esteLastMinute = Duration.between(acum, dataOraPlecare).toHours() < 48 && dataOraPlecare.isAfter(acum);
+        if (esteLastMinute) {
+            zborSelectat.setTarifeBusiness((int) (zborSelectat.getTarifeBusiness() * 0.6));
+            zborSelectat.setTarifeClasa1((int) (zborSelectat.getTarifeClasa1() * 0.6));
+            zborSelectat.setTarifeEconomie((int) (zborSelectat.getTarifeEconomie() * 0.6));
+            model.addAttribute("discount", true);
+
+        model.addAttribute("zbor", zborSelectat);
+        return "client_web/detaliiZbor";
         } else {
             // ... gestionare eroare ...
             return "error";
