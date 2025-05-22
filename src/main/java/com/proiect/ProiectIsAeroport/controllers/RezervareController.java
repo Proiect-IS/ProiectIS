@@ -59,7 +59,7 @@ public class RezervareController {
             plata=false;
         }else plata=true;
         Rezervare rezervare=new Rezervare(codCursa,nume,telefon,nrAdulti,nrCopii,nrSeniori,masaInclusa,bagajSuplimentar,clasa,turRetur,plata);
-
+        rezervari.add(rezervare);
         salveazaRezervari();
 
         model.addAttribute("mesajRezervare", "Rezervarea a fost înregistrată cu succes!");
