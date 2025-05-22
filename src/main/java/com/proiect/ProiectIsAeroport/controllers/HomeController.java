@@ -92,7 +92,6 @@ public class HomeController {
         LocalTime ora = LocalTime.parse(oraPlecare); // format HH:mm
         LocalDateTime dataOraPlecare = LocalDateTime.of(data, ora);
         LocalDateTime acum = LocalDateTime.now();
-
         if(Duration.between(acum, dataOraPlecare).toHours() < 48 && dataOraPlecare.isAfter(acum))
         {
             zborSelectat.setTarifeBusiness(zborSelectat.getTarifeBusiness()*0.6);
