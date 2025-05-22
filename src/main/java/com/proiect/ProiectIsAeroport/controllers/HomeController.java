@@ -59,7 +59,7 @@ public class HomeController {
                        @RequestParam(value = "tip_zbor", required = false) Boolean esteTurRetur,
                        org.springframework.ui.Model model) {
 
-        List<Zbor> zborList = new ArrayList<>(); // Inițializează o listă goală
+        List<Zbor> zborList = new ArrayList<>();
 
         if (oras_plecare != null && oras_destinatie != null && esteTurRetur != null) {
             zborList = FindZbor(oras_plecare, oras_destinatie, esteTurRetur);
@@ -76,5 +76,23 @@ public class HomeController {
 
         return "client_web/home";
     }
+    @GetMapping("/detaliiZbor")
+    public String detaliiZbor(@RequestParam("codCursa") String codCursa, org.springframework.ui.Model model) {
+        // ... logica pentru a căuta zborul în baza codului cursei
+        Zbor zborSelectat = findZborByCodCursa(codCursa); // Implementează această metodă
 
+        if (zborSelectat != null) {
+            model.addAttribute("zbor", zborSelectat);
+            return "client_web/detaliiZbor";
+        } else {
+            // ... gestionare eroare ...
+            return "error";
+        }
+    }
+    private Zbor findZborByCodCursa(String codCursa) {
+        return zboruri.stream()
+                .filter(zbor -> zbor.getCod_cursa().equals(codCursa))
+                .findFirst()
+                .orElse(null);
+    }
 }
