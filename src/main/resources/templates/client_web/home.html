@@ -63,8 +63,14 @@
 </div>
 
 <div class="card" th:each="zbor : ${zboruriCautare}">
-    <div class="status">
-        Tip zbor: <span th:text="${zbor.getTip_zbor()}"></span>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="status">
+            Tip zbor: <span th:text="${zbor.getTip_zbor()}"></span>
+        </div>
+        <form th:action="@{/detaliiZbor}" method="get">
+            <input type="hidden" name="codCursa" th:value="${zbor.cod_cursa}">
+            <button type="submit" class="btn btn-outline-primary btn-sm">Rezervă zbor</button>
+        </form>
     </div>
     <div class="destinatie-info">
         <div class="plecare">

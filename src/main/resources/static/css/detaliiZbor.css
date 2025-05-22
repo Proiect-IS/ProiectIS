@@ -1,0 +1,28 @@
+.nav-bar {
+    background-color: #003366;
+    display: flex;
+    width: 100%;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+}
+
+.nav-bar-text {
+    color: #FFFFFF;
+    padding-left: 40px;
+    font-size: 60px;
+}
+
+.logo img{
+    width: 60px;
+    height: 60px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 20px; /* spațiu între text și imagine */
+    font-size: 2rem;
+    color: white;
+}
