@@ -7,6 +7,7 @@ import com.proiect.ProiectIsAeroport.companie.Zbor;
 import com.proiect.ProiectIsAeroport.companie.Zbor_Regulat;
 import com.proiect.ProiectIsAeroport.companie.Zbor_Sezonier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.File;
@@ -49,6 +50,31 @@ public class StaffController {
             System.out.println("No rezervari found");
         }
         return rezervareList;
+    }
+    @GetMapping("/personal")
+    public String staff(@RequestParam ("codCursa") String codCursa,
+                       org.springframework.ui.Model model) {
+
+        List<Rezervare> rezervareList = new ArrayList<>();
+
+        if (codCursa !=null) {
+            rezervareList = FindZborValidare(codCursa);
+            System.out.println(rezervareList);
+        } else {
+            System.out.println("Parametrii de căutare nu sunt completi.");
+            // Poți adăuga aici un mesaj pentru utilizator în model dacă dorești
+            // model.addAttribute("mesaj", "Introduceți criteriile de căutare.");
+        }
+
+        model.addAttribute("rezervariCautare", rezervareList);
+
+        System.out.println(rezervareList);
+
+        return "personal_web/personal";
+    }
+    @GetMapping("/personal")
+    public String showPersonalPage() {
+        return "personal_web/personal";
     }
 
 
