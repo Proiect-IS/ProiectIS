@@ -12,11 +12,20 @@ public class Rezervare {
     private String clasa;
     private boolean turRetur;
     private boolean plataCuCard;
+    private double pretTotal;
 
     public Rezervare() {
     }
 
-    public Rezervare(String codCursa, String numePasager, String telefon, int nrAdulti, int nrCopii, int nrSeniori, boolean masaInclusa, boolean bagajSuplimentar, String clasa, boolean turRetur, boolean plataCuCard) {
+    public double getPretTotal() {
+        return pretTotal;
+    }
+
+    public void setPretTotal(double pretTotal) {
+        this.pretTotal = pretTotal;
+    }
+
+    public Rezervare(String codCursa, String numePasager, String telefon, int nrAdulti, int nrCopii, int nrSeniori, boolean masaInclusa, boolean bagajSuplimentar, String clasa, boolean turRetur, boolean plataCuCard, double pretTotal) {
         this.codCursa = codCursa;
         this.numePasager = numePasager;
         this.telefon = telefon;
@@ -28,6 +37,7 @@ public class Rezervare {
         this.clasa = clasa;
         this.turRetur = turRetur;
         this.plataCuCard = plataCuCard;
+        this.pretTotal = pretTotal;
     }
 
     public String getCodCursa() {

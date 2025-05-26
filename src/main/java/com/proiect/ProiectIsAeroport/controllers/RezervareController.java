@@ -53,12 +53,35 @@ public class RezervareController {
                                   @RequestParam("clasa") String clasa,
                                   @RequestParam("esteTurRetur") boolean turRetur,
                                   @RequestParam("metodaPlata") String plataCuCard,
+                                  @RequestParam("tarifeBusiness") double tarifeBusiness,
+                                  @RequestParam("tarifeEconomie") double tarifeEconomie,
+                                  @RequestParam("tarifeClasa1") double tarifeClasa1,
                                   org.springframework.ui.Model model) {
         boolean plata;
         if(plataCuCard.equals("cash")) {
             plata=false;
         }else plata=true;
-        Rezervare rezervare=new Rezervare(codCursa,nume,telefon,nrAdulti,nrCopii,nrSeniori,masaInclusa,bagajSuplimentar,clasa,turRetur,plata);
+        double pretTotal=0;
+        if(clasa.equalsIgnoreCase("business")) {
+            pretTotal=nrAdulti*tarifeBusiness+nrCopii*tarifeBusiness+nrSeniori*tarifeBusiness;
+        } else if (clasa.equalsIgnoreCase("economie")) {
+            pretTotal=nrAdulti*tarifeEconomie+nrCopii*tarifeEconomie+nrSeniori*tarifeEconomie;
+
+        }else if(clasa.equalsIgnoreCase("clasa 1")) {
+            pretTotal=nrAdulti*tarifeClasa1+nrCopii*tarifeClasa1+nrSeniori*tarifeClasa1;
+        }
+        if(masaInclusa && bagajSuplimentar) {
+            pretTotal=pretTotal*1.1;
+        } else if (masaInclusa) {
+            pretTotal=pretTotal*1.05;
+
+        }else if(bagajSuplimentar) {
+            pretTotal=pretTotal*1.05;
+        }
+
+
+        Rezervare rezervare=new Rezervare(codCursa,nume,telefon,nrAdulti,nrCopii,nrSeniori,masaInclusa,bagajSuplimentar,clasa,turRetur,plata,pretTotal);
+
         rezervari.add(rezervare);
         salveazaRezervari();
 

@@ -115,12 +115,12 @@ public class HomeController {
             zborSelectat.setTarifeEconomie((int) (zborSelectat.getTarifeEconomie() * 0.6));
             model.addAttribute("discount", true);
 
+
+        }
         model.addAttribute("zbor", zborSelectat);
         return "client_web/detaliiZbor";
-        } else {
-            // ... gestionare eroare ...
-            return "error";
-        }
+
+
     }
     private Zbor findZborByCodCursa(String codCursa) {
         return zboruri.stream()
