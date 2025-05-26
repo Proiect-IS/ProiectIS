@@ -13,7 +13,7 @@
     </div>
 </div>
 
-<div class="container mt-5">
+<div class="container mt-5" style="margin-bottom: 20px">
     <h1>Detalii Zbor</h1>
     <div th:if="${zbor}">
         <p><strong>Cod cursă:</strong> <span th:text="${zbor.cod_cursa}"></span></p>
@@ -34,9 +34,14 @@
                 th:text="${zbor.tarifeClasa1}"></span> lei</p>
 
         <h2 class="mt-4">Detalii Rezervare</h2>
-        <form action="/rezervari/adauga" method="post">
+        <form action="/rezervari/preconfirmare" method="post">
             <input type="hidden" name="codCursa" th:value="${zbor.cod_cursa}">
             <input type="hidden" name="esteTurRetur" th:value="${zbor.isEsteTurRetur()}">
+            <input type="hidden" name="tarifeBusiness" th:value="${zbor.tarifeBusiness}">
+            <input type="hidden" name="tarifeEconomie" th:value="${zbor.tarifeEconomie}">
+            <input type="hidden" name="tarifeClasa1" th:value="${zbor.tarifeClasa1}">
+            <input type="hidden" name="ziua" th:value="${zbor.ziua}">
+            <input type="hidden" name="oraPlecare" th:value="${zbor.oraPlecare}">
 
             <div class="mb-3">
                 <label for="nume" class="form-label">Nume</label>
@@ -69,11 +74,11 @@
             <div class="mb-3">
                 <label class="form-label">Servicii Suplimentare</label>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="masaInclusa" name="masaInclusa">
+                    <input type="checkbox" class="form-check-input" id="masaInclusa" name="masaInclusa" value="true">
                     <label class="form-check-label" for="masaInclusa">Masa inclusă</label>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="bagajSuplimentar" name="bagajSuplimentar">
+                    <input type="checkbox" class="form-check-input" id="bagajSuplimentar" name="bagajSuplimentar" value="true">
                     <label class="form-check-label" for="bagajSuplimentar">Bagaj suplimentar</label>
                 </div>
             </div>
@@ -99,7 +104,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Rezervă</button>
+            <button type="submit" class="btn btn-primary">Urmatoarea pagina</button>
         </form>
     </div>
     <div th:unless="${zbor}">

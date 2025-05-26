@@ -83,6 +83,8 @@ public class RezervareController {
                                   @RequestParam("tarifeBusiness") double tarifeBusiness,
                                   @RequestParam("tarifeEconomie") double tarifeEconomie,
                                   @RequestParam("tarifeClasa1") double tarifeClasa1,
+                                  @RequestParam("ziua") String ziua,
+                                  @RequestParam("oraPlecare") String oraPlecare,
                                   org.springframework.ui.Model model) {
         boolean plata;
         if(plataCuCard.equals("cash")) {
@@ -113,7 +115,8 @@ public class RezervareController {
         //rezervari.add(rezervare);
         //salveazaRezervari();
 
-        //model.addAttribute("mesajRezervare", "Rezervarea a fost înregistrată cu succes!");
+        model.addAttribute("zi", ziua);
+        model.addAttribute("ora", oraPlecare);
         model.addAttribute("detaliiZbor",rezervare);
         return "client_web/preconfirmareRezervare";
     }

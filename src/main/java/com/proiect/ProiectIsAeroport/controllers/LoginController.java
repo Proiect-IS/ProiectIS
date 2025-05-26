@@ -29,7 +29,7 @@ public class LoginController {
         } else if ("staff".equals(userType)) {
             // Logica de verificare a parolei pentru clienți standard
             if (checkStandardUserPassword(password)) {
-                return "redirect:/home.html";
+                return "redirect:/personal";
             } else {
                 model.addAttribute("error", "Parolă incorectă pentru tipul de utilizator selectat.");
                 return "client_web/login";
