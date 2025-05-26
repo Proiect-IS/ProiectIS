@@ -51,7 +51,7 @@ public class StaffController {
         }
         return rezervareList;
     }
-    @GetMapping("/personal")
+    @GetMapping("/zboruri")
     public String staff(@RequestParam ("codCursa") String codCursa,
                        org.springframework.ui.Model model) {
 
@@ -70,10 +70,6 @@ public class StaffController {
 
         System.out.println(rezervareList);
 
-        return "personal_web/personal";
-    }
-    @GetMapping("/personal")
-    public String showPersonalPage() {
         return "personal_web/personal";
     }
 
