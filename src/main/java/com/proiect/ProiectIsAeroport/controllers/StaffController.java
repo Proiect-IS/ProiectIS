@@ -8,6 +8,7 @@ import com.proiect.ProiectIsAeroport.companie.Zbor_Regulat;
 import com.proiect.ProiectIsAeroport.companie.Zbor_Sezonier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.File;
@@ -51,6 +52,27 @@ public class StaffController {
         }
         return rezervareList;
     }
+    public void salveazaRezervari() {
+        try {
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(rezervariFile, rezervari);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @PostMapping("/valideazaPlataCash")
+    public String validareRezervare(@RequestParam("numePasager") String nume ) {
+        for(Rezervare rezerva : rezervari) {
+            if(rezerva.getNumePasager().equalsIgnoreCase(nume)) {
+                rezerva.setValidat(true);
+                salveazaRezervari();
+                break;
+            }
+        }
+
+
+        return "personal_web/personal";
+    }
+
     @GetMapping("/zboruri")
     public String staff(@RequestParam ("codCursa") String codCursa,
                        org.springframework.ui.Model model) {
@@ -72,6 +94,7 @@ public class StaffController {
 
         return "personal_web/personal";
     }
+
 
 
 }
