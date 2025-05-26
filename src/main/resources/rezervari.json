@@ -68,4 +68,18 @@
   "plataCuCard" : true,
   "pretTotal" : 109824.00000000001,
   "validat" : true
+}, {
+  "codCursa" : "911",
+  "numePasager" : "mircea gioana",
+  "telefon" : "07caldarece",
+  "nrAdulti" : 1,
+  "nrCopii" : 2,
+  "nrSeniori" : 3,
+  "masaInclusa" : true,
+  "bagajSuplimentar" : true,
+  "clasa" : "eco",
+  "turRetur" : false,
+  "plataCuCard" : false,
+  "pretTotal" : 79.2,
+  "validat" : false
 } ]
