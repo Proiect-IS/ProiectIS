@@ -2,10 +2,7 @@ package com.proiect.ProiectIsAeroport.controllers;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.proiect.ProiectIsAeroport.companie.Tip_Zbor;
-import com.proiect.ProiectIsAeroport.companie.Zbor;
-import com.proiect.ProiectIsAeroport.companie.Zbor_Regulat;
-import com.proiect.ProiectIsAeroport.companie.Zbor_Sezonier;
+import com.proiect.ProiectIsAeroport.companie.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -23,6 +20,10 @@ public class CompanieController {
     private List<Zbor> zboruri = new ArrayList<>();
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final File zboruriFile = new File("src/main/resources/zboruri.json");
+    private List<Rezervare> rezervari = new ArrayList<>();
+    private final ObjectMapper objectMapper1 = new ObjectMapper();
+    private final File rezervariFile = new File("src/main/resources/rezervari.json");
+
     public CompanieController() {
         try {
             if (zboruriFile.exists()) {
@@ -39,18 +40,45 @@ public class CompanieController {
         } catch (IOException e) {
             zboruri = new ArrayList<>();
         }
+        try {
+            if (rezervariFile.exists()) {
+                if (rezervariFile.length() > 0) {
+                    objectMapper1.registerSubtypes(Zbor_Regulat.class, Zbor_Sezonier.class);
+                    rezervari = objectMapper1.readValue(rezervariFile, new TypeReference<List<Rezervare>>() {
+                    });
+                } else {
+                    rezervari = new ArrayList<>();
+                }
+            } else {
+                rezervariFile.createNewFile();
+                rezervari = new ArrayList<>();
+            }
+        } catch (IOException e) {
+            rezervari = new ArrayList<>();
+        }
     }
 
     @PostMapping("/stergeZbor")
     public String StergereZbor(@RequestParam("codCursa") String cod_cursa){
         zboruri.removeIf(zbor -> zbor.getCod_cursa().equals(cod_cursa));
 
-        // Salvează lista actualizată în fișier
+        // Ștergi rezervările asociate
+        rezervari.removeIf(rezervare -> rezervare.getCodCursa().equalsIgnoreCase(cod_cursa));
+
+        // Salvează lista de zboruri actualizată
         try {
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(zboruriFile, zboruri);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // Salvează lista de rezervări actualizată
+        try {
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(rezervariFile, rezervari);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return "redirect:/companie";
     }
 
