@@ -8,6 +8,21 @@
     <title>
         DareSky
     </title>
+    <style>
+
+        .info > div {
+            margin-bottom: 8px;
+        }
+
+        .label {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .validation-button {
+            margin-left: 15px;
+        }
+    </style>
 </header>
 <body style="background-color: #F8F9FA">
 <div class="nav-bar">
@@ -45,18 +60,25 @@
         <div>
             <div><span class="label">Cod cursă:</span> <span class="cod-cursa" th:text="${zbor.codCursa}"></span></div>
             <div><span class="label">Nume pasager:</span> <span th:text="${zbor.numePasager}"></span></div>
-            <div><span class="label">Telefon</span> <span th:text="${zbor.telefon}"></span></div>
-            <div><span class="label">Numar adulti:</span> <span th:text="${zbor.nrAdulti}"></span></div>
-            <div><span class="label">Numar copii:</span> <span th:text="${zbor.nrCopii}"></span></div>
-            <div><span class="label">Numar seniori:</span> <span th:text="${zbor.nrSeniori}"></span></div>
+            <div><span class="label">Telefon:</span> <span th:text="${zbor.telefon}"></span></div>
+            <div><span class="label">Număr adulți:</span> <span th:text="${zbor.nrAdulti}"></span></div>
+            <div><span class="label">Număr copii:</span> <span th:text="${zbor.nrCopii}"></span></div>
+            <div><span class="label">Număr seniori:</span> <span th:text="${zbor.nrSeniori}"></span></div>
         </div>
         <div style="text-align: right;">
-            <div><span class="label">Clasa:</span> <span th:text="${zbor.clasa}"></span> </div>
-            <div><span class="label">Tur-retur:</span> <span th:text="${zbor.turRetur}"></span> </div>
-            <div><span class="label">Masa inclusa:</span> <span th:text="${zbor.masaInclusa}"></span> </div>
-            <div><span class="label">Bagaj suplimentar:</span> <span th:text="${zbor.bagajSuplimentar}"></span> </div>
-            <div><span class="label">Plata cu card:</span> <span th:text="${zbor.plataCuCard}"></span> </div>
-            <div><span class="label">Pret total:</span> <span th:text="${zbor.pretTotal}"></span> </div>
+            <div><span class="label">Clasă:</span> <span th:text="${zbor.clasa}"></span></div>
+            <div><span class="label">Tur-retur:</span> <span th:text="${zbor.turRetur ? 'DA' : 'NU'}"></span></div>
+            <div><span class="label">Masa inclusă:</span> <span th:text="${zbor.masaInclusa ? 'DA' : 'NU'}"></span></div>
+            <div><span class="label">Bagaj suplimentar:</span> <span th:text="${zbor.bagajSuplimentar ? 'DA' : 'NU'}"></span></div>
+            <div><span class="label">Plata cu card:</span> <span th:text="${zbor.plataCuCard ? 'DA' : 'NU'}"></span></div>
+            <div><span class="label">Preț total:</span> <span th:text="${zbor.pretTotal}"></span></div>
+            <th:block th:if="${!zbor.plataCuCard && !zbor.validat}">
+                <div><span class="label">Validat:</span> <span th:text="${zbor.validat}"></span></div>
+                <form th:action="@{/valideazaPlataCash}" method="post">
+                    <input type="hidden" name="numePasager" th:value="${zbor.numePasager}">
+                    <button type="submit" class="btn btn-sm btn-success validation-button">Validare plată</button>
+                </form>
+            </th:block>
         </div>
     </div>
 </div>
