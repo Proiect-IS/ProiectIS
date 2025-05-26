@@ -5,6 +5,7 @@
     flex: 1;
     justify-content: space-between;
     align-items: center;
+    color: white;
     height: 100px;
 }
 
@@ -108,21 +109,6 @@
     color: white;
 }
 
-.card {
-    background-color: #B2CDE9;
-    width: 600px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    padding: 25px;
-}
-
-.status {
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 20px;
-    font-size: 1.2em;
-}
-
 .header {
     display: flex;
     justify-content: space-between;
@@ -156,3 +142,134 @@
     height: 1em;
     vertical-align: middle; /* Aliniază iconița pe verticală cu textul (dacă ai) */
 }
+.card {
+    background-color: #B2CDE9;
+    width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 25px;
+}
+
+.status {
+    color: #555;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+.info {
+    display: flex; /* Folosim flexbox pentru a aranja coloanele de informații */
+    justify-content: space-between; /* Distribuim spațiul egal între coloane */
+}
+
+.column {
+    flex: 1; /* Fiecare coloană ocupă o parte egală din spațiu */
+    padding-right: 10px; /* Adăugăm puțin spațiu între coloane */
+}
+
+.label {
+    font-weight: bold;
+    color: #333;
+    margin-right: 5px;
+}
+
+.cod-cursa {
+    font-size: 1.1em;
+    color: #007bff;
+}
+
+.destinatie-info {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.plecare, .sosire {
+    flex: 1;
+    text-align: center;
+}
+
+.sageata {
+    margin: 0 10px;
+    color: #777;
+}
+
+.preturi {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-around;
+}
+
+.pret {
+    text-align: center;
+}
+
+.pret-label {
+    font-size: 0.85em;
+    color: #777;
+}
+
+.pret-valoare {
+    font-weight: bold;
+    color: #28a745; /* Culoare verde pentru preț */
+}
+
+.column:last-child {
+    padding-right: 0; /* Eliminăm padding-ul de pe ultima coloană */
+    text-align: right; /* Aliniem textul la dreapta în a doua coloană */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*min-height: 100vh;*/
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.nav-bar {
+    /* Stilurile tale pentru bara de navigare */
+    width: 100%; /* Ocupă toată lățimea */
+    margin-bottom: 20px; /* Spațiu sub bara de navigare */
+}
+
+.container { /* Containerul pentru formular */
+    width: 80%; /* Ajustează lățimea dorită pentru formular */
+    margin-bottom: 20px; /* Spațiu sub formular */
+}
+
+.container-gasite {
+    width: 80%; /* Ajustează lățimea dorită pentru containerul cu rezultate */
+    text-align: center; /* Centrează textul din interiorul containerului */
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-gasite h3 {
+    text-align: center;
+}
+
