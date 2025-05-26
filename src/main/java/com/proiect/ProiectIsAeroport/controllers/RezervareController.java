@@ -60,7 +60,7 @@ public class RezervareController {
             plata=false;
         }else plata=true;
 
-        Rezervare rezervare=new Rezervare(codCursa,nume,telefon,nrAdulti,nrCopii,nrSeniori,masaInclusa,bagajSuplimentar,clasa,turRetur,plata,pretTotal);
+        Rezervare rezervare=new Rezervare(codCursa,nume,telefon,nrAdulti,nrCopii,nrSeniori,masaInclusa,bagajSuplimentar,clasa,turRetur,plata,pretTotal,plata);
 
         rezervari.add(rezervare);
         salveazaRezervari();
@@ -108,7 +108,7 @@ public class RezervareController {
         }
 
 
-        Rezervare rezervare=new Rezervare(codCursa,nume,telefon,nrAdulti,nrCopii,nrSeniori,masaInclusa,bagajSuplimentar,clasa,turRetur,plata,pretTotal);
+        Rezervare rezervare=new Rezervare(codCursa,nume,telefon,nrAdulti,nrCopii,nrSeniori,masaInclusa,bagajSuplimentar,clasa,turRetur,plata,pretTotal,plata);
 
         //rezervari.add(rezervare);
         //salveazaRezervari();

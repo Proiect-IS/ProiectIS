@@ -13,6 +13,7 @@ public class Rezervare {
     private boolean turRetur;
     private boolean plataCuCard;
     private double pretTotal;
+    private boolean validat;
 
     public Rezervare() {
     }
@@ -25,7 +26,15 @@ public class Rezervare {
         this.pretTotal = pretTotal;
     }
 
-    public Rezervare(String codCursa, String numePasager, String telefon, int nrAdulti, int nrCopii, int nrSeniori, boolean masaInclusa, boolean bagajSuplimentar, String clasa, boolean turRetur, boolean plataCuCard, double pretTotal) {
+    public boolean isValidat() {
+        return validat;
+    }
+
+    public void setValidat(boolean validat) {
+        this.validat = validat;
+    }
+
+    public Rezervare(String codCursa, String numePasager, String telefon, int nrAdulti, int nrCopii, int nrSeniori, boolean masaInclusa, boolean bagajSuplimentar, String clasa, boolean turRetur, boolean plataCuCard, double pretTotal, boolean validat) {
         this.codCursa = codCursa;
         this.numePasager = numePasager;
         this.telefon = telefon;
@@ -38,6 +47,7 @@ public class Rezervare {
         this.turRetur = turRetur;
         this.plataCuCard = plataCuCard;
         this.pretTotal = pretTotal;
+        this.validat = validat;
     }
 
     public String getCodCursa() {
