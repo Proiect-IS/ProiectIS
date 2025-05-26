@@ -1,15 +1,53 @@
-[
-  {
-    "codCursa": "B2",
-    "numePasager": "Simoc David",
-    "telefon": "0773886961",
-    "nrAdulti": 1,
-    "nrCopii": 0,
-    "nrSeniori": 0,
-    "masaInclusa": true,
-    "bagajSuplimentar": true,
-    "clasa": "business",
-    "turRetur": true,
-    "plataCuCard": true
-  }
-]
+[ {
+  "codCursa" : "B2",
+  "numePasager" : "Simoc David",
+  "telefon" : "0773886961",
+  "nrAdulti" : 1,
+  "nrCopii" : 0,
+  "nrSeniori" : 0,
+  "masaInclusa" : true,
+  "bagajSuplimentar" : true,
+  "clasa" : "business",
+  "turRetur" : true,
+  "plataCuCard" : true,
+  "pretTotal" : 0.0
+}, {
+  "codCursa" : "B2",
+  "numePasager" : "Simoc David",
+  "telefon" : "0773886961",
+  "nrAdulti" : 2,
+  "nrCopii" : 0,
+  "nrSeniori" : 0,
+  "masaInclusa" : true,
+  "bagajSuplimentar" : false,
+  "clasa" : "business",
+  "turRetur" : true,
+  "plataCuCard" : true,
+  "pretTotal" : 18.900000000000002
+}, {
+  "codCursa" : "B2",
+  "numePasager" : "David",
+  "telefon" : "0773886961",
+  "nrAdulti" : 1,
+  "nrCopii" : 2,
+  "nrSeniori" : 0,
+  "masaInclusa" : true,
+  "bagajSuplimentar" : false,
+  "clasa" : "business",
+  "turRetur" : true,
+  "plataCuCard" : true,
+  "pretTotal" : 15.75
+}, {
+  "codCursa" : "B4",
+  "numePasager" : "Tica Andrei",
+  "telefon" : "0773523671",
+  "nrAdulti" : 2,
+  "nrCopii" : 0,
+  "nrSeniori" : 0,
+  "masaInclusa" : false,
+  "bagajSuplimentar" : true,
+  "clasa" : "business",
+  "turRetur" : false,
+  "plataCuCard" : true,
+  "pretTotal" : 315.0
+} ]
