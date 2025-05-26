@@ -75,8 +75,8 @@ public class RezervareController {
                                   @RequestParam("adulti") int nrAdulti,
                                   @RequestParam("copii") int nrCopii,
                                   @RequestParam("seniori") int nrSeniori,
-                                  @RequestParam(value = "masaInclusa", required = false) boolean masaInclusa,
-                                  @RequestParam(value = "bagajSuplimentar", required = false) boolean bagajSuplimentar,
+                                  @RequestParam(value = "masaInclusa", required = false,defaultValue = "false") boolean masaInclusa,
+                                  @RequestParam(value = "bagajSuplimentar", required = false,defaultValue = "false") boolean bagajSuplimentar,
                                   @RequestParam("clasa") String clasa,
                                   @RequestParam("esteTurRetur") boolean turRetur,
                                   @RequestParam("metodaPlata") String plataCuCard,
@@ -89,6 +89,7 @@ public class RezervareController {
             plata=false;
         }else plata=true;
         double pretTotal=0;
+
         if(clasa.equalsIgnoreCase("business")) {
             pretTotal=nrAdulti*tarifeBusiness+nrCopii*tarifeBusiness+nrSeniori*tarifeBusiness;
         } else if (clasa.equalsIgnoreCase("economie")) {
@@ -99,10 +100,10 @@ public class RezervareController {
         }
         if(masaInclusa && bagajSuplimentar) {
             pretTotal=pretTotal*1.1;
-        } else if (masaInclusa) {
+        } else if (masaInclusa && bagajSuplimentar==false) {
             pretTotal=pretTotal*1.05;
 
-        }else if(bagajSuplimentar) {
+        }else if(bagajSuplimentar && masaInclusa==false) {
             pretTotal=pretTotal*1.05;
         }
 
