@@ -108,6 +108,7 @@ public class RezervareController {
         }else if(bagajSuplimentar && masaInclusa==false) {
             pretTotal=pretTotal*1.05;
         }
+        pretTotal=Math.round(pretTotal*100.0)/100.0;
 
 
         Rezervare rezervare=new Rezervare(codCursa,nume,telefon,nrAdulti,nrCopii,nrSeniori,masaInclusa,bagajSuplimentar,clasa,turRetur,plata,pretTotal,plata);
