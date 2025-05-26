@@ -10,7 +10,8 @@
   "clasa" : "business",
   "turRetur" : true,
   "plataCuCard" : true,
-  "pretTotal" : 0.0
+  "pretTotal" : 0.0,
+  "validat" : false
 }, {
   "codCursa" : "B2",
   "numePasager" : "Simoc David",
@@ -23,7 +24,8 @@
   "clasa" : "business",
   "turRetur" : true,
   "plataCuCard" : true,
-  "pretTotal" : 18.900000000000002
+  "pretTotal" : 18.900000000000002,
+  "validat" : false
 }, {
   "codCursa" : "B2",
   "numePasager" : "David",
@@ -36,7 +38,8 @@
   "clasa" : "business",
   "turRetur" : true,
   "plataCuCard" : true,
-  "pretTotal" : 15.75
+  "pretTotal" : 15.75,
+  "validat" : false
 }, {
   "codCursa" : "B4",
   "numePasager" : "Tica Andrei",
@@ -49,5 +52,20 @@
   "clasa" : "business",
   "turRetur" : false,
   "plataCuCard" : true,
-  "pretTotal" : 315.0
+  "pretTotal" : 315.0,
+  "validat" : false
+}, {
+  "codCursa" : "911",
+  "numePasager" : "Mohamed Atta",
+  "telefon" : "07aparece",
+  "nrAdulti" : 2,
+  "nrCopii" : 400,
+  "nrSeniori" : 14,
+  "masaInclusa" : true,
+  "bagajSuplimentar" : true,
+  "clasa" : "business",
+  "turRetur" : false,
+  "plataCuCard" : true,
+  "pretTotal" : 109824.00000000001,
+  "validat" : true
 } ]
