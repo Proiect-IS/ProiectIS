@@ -92,10 +92,10 @@ public class RezervareController {
 
         if(clasa.equalsIgnoreCase("business")) {
             pretTotal=nrAdulti*tarifeBusiness+nrCopii*tarifeBusiness+nrSeniori*tarifeBusiness;
-        } else if (clasa.equalsIgnoreCase("economie")) {
+        } else if (clasa.equalsIgnoreCase("eco")) {
             pretTotal=nrAdulti*tarifeEconomie+nrCopii*tarifeEconomie+nrSeniori*tarifeEconomie;
 
-        }else if(clasa.equalsIgnoreCase("clasa 1")) {
+        }else if(clasa.equalsIgnoreCase("first")) {
             pretTotal=nrAdulti*tarifeClasa1+nrCopii*tarifeClasa1+nrSeniori*tarifeClasa1;
         }
         if(masaInclusa && bagajSuplimentar) {
