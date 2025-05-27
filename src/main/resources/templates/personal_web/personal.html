@@ -79,6 +79,9 @@
                     <button type="submit" class="btn btn-sm btn-success validation-button">Validare plată</button>
                 </form>
             </th:block>
+            <th:block th:if="${zbor.validat}">
+                <div><span style="color:green" class="label">Zbor validat</span></div>
+            </th:block>
         </div>
     </div>
 </div>
