@@ -73,9 +73,9 @@ public class SerializareController {
                 pretBusiness=pretBusiness*0.95;
                 pretEconomie=pretEconomie*0.95;
             } else if (esteTurRetur && (discount!=0)) {
-                pretClasa1=pretClasa1*(1-(discount/100));
-                pretBusiness=pretBusiness*(1-(discount/100));
-                pretEconomie=pretEconomie*(1-(discount/100));
+                pretClasa1=pretClasa1*(1-((double)discount/100));
+                pretBusiness=pretBusiness*(1-((double)discount/100));
+                pretEconomie=pretEconomie*(1-((double)discount/100));
             }
 
 
