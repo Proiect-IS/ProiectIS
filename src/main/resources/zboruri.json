@@ -142,4 +142,23 @@
   "type" : "SEZONIER",
   "oraPlecare" : "19:30",
   "zi" : "Vineri"
+}, {
+  "cod_cursa" : "Z9",
+  "tip_zbor" : "SEZONIER",
+  "oras_destinatie" : "Istambul",
+  "oras_plecare" : "Bucuresti",
+  "tarifeBusiness" : 968.0,
+  "tarifeClasa1" : 1584.0,
+  "tarifeEconomie" : 396.0,
+  "model" : "MODEL3",
+  "locuriBusiness" : 50,
+  "locuriClasa1" : 8,
+  "locuriEconomie" : 70,
+  "esteTurRetur" : true,
+  "discount" : 12,
+  "inceput" : "Septembrie",
+  "sfarsit" : "Octombrie",
+  "type" : "SEZONIER",
+  "oraPlecare" : "02:45",
+  "zi" : "Joi"
 } ]
