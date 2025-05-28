@@ -60,6 +60,8 @@
                             <div><span class="label">Eco:</span> <span th:text="${zbor.locuriEconomie}"></span> locuri</div>
                             <div><span class="label">Business:</span> <span th:text="${zbor.locuriBusiness}"></span> locuri</div>
                             <div><span class="label">First:</span> <span th:text="${zbor.locuriClasa1}"></span> locuri</div>
+                            <div><span class="label">Tur retur:</span><span th:text="${zbor.isEsteTurRetur() ? 'DA' : 'NU'}"></span></div>
+
                         </div>
                     </div>
                     <div class="preturi">
