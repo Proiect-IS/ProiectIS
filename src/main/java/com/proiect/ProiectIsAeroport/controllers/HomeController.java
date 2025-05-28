@@ -122,7 +122,7 @@ public class HomeController {
 
 
     }
-    private Zbor findZborByCodCursa(String codCursa) {
+    public Zbor findZborByCodCursa(String codCursa) {
         return zboruri.stream()
                 .filter(zbor -> zbor.getCod_cursa().equals(codCursa))
                 .findFirst()
