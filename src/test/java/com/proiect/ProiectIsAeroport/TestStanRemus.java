@@ -32,81 +32,75 @@ public class TestStanRemus {
         controller.getRezervari().clear();
         model = mock(Model.class);
     }
-
-
     @Test
     void testAdaugaRezervareStandard() {
-        String rezultat = controller.adaugaRezervare("CURS123", "Ion Popescu", "0712345678",
-                2, 1, 0, true, false, "economy", false,
-                "card", 300.0, model);
+        controller.adaugaRezervare("CURS123", "Ion Popescu", "0712345678",
+                2, 1, 0, true, false, "eco", false,
+                "cash", 300.0, model);
 
         assertEquals(1, controller.getRezervari().size());
         Rezervare r = controller.getRezervari().get(0);
         assertEquals("Ion Popescu", r.getNumePasager());
         assertTrue(r.isMasaInclusa());
-        assertEquals("client_web/confirmareRezervare", rezultat);
+        assertTrue(r.isPlataCuCard());
         verify(model).addAttribute(eq("mesajRezervare"), anyString());
     }
 
     @Test
     void testAdaugaRezervareBusinessClass() {
-        String rezultat = controller.adaugaRezervare(
-                "CURS456", "Maria Ionescu", "0722333444",
+        controller.adaugaRezervare("CURS456", "Maria Ionescu", "0722333444",
                 1, 0, 1, true, true, "business", true,
-                "paypal", 550.0, model
-        );
+                "card", 550.0, model);
 
         assertEquals(1, controller.getRezervari().size());
         Rezervare r = controller.getRezervari().get(0);
         assertEquals("Maria Ionescu", r.getNumePasager());
         assertEquals("business", r.getClasa());
+        assertTrue(r.isPlataCuCard());
     }
 
     @Test
     void testAdaugaRezervareCuCopil() {
-        String rezultat = controller.adaugaRezervare(
-                "CURS789", "Vasile Dumitrescu", "0733555666",
-                1, 1, 0, false, false, "economy", false,
-                "cash", 200.0, model
-        );
+        controller.adaugaRezervare("CURS789", "Vasile Dumitrescu", "0733555666",
+                1, 1, 0, false, false, "eco", false,
+                "card", 200.0, model);
 
         assertEquals(1, controller.getRezervari().size());
         Rezervare r = controller.getRezervari().get(0);
         assertEquals(1, r.getNrAdulti());
         assertEquals(1, r.getNrCopii());
         assertFalse(r.isMasaInclusa());
+        assertFalse(r.isPlataCuCard());
     }
+
     @Test
     void testAdaugaRezervareFaraBagaj() {
-        String rezultat = controller.adaugaRezervare(
-                "CURS101", "Ana Vlad", "0744666777",
-                1, 0, 0, false, false, "economy", false,
-                "card", 150.0, model
-        );
+        controller.adaugaRezervare("CURS101", "Ana Vlad", "0744666777",
+                1, 0, 0, false, false, "eco", false,
+                "cash", 150.0, model);
 
         assertEquals(1, controller.getRezervari().size());
         Rezervare r = controller.getRezervari().get(0);
         assertFalse(r.isBagajSuplimentar());
+        assertTrue(r.isPlataCuCard());
     }
 
     @Test
     void testAdaugaRezervareCuBagajPrioritar() {
-        String rezultat = controller.adaugaRezervare(
-                "CURS102", "George Enescu", "0755777888",
-                1, 0, 0, true, false, "economy", true,
-                "cash", 220.0, model
-        );
+        controller.adaugaRezervare("CURS102", "George Enescu", "0755777888",
+                1, 0, 0, true, true, "eco", true,
+                "card", 220.0, model);
 
         assertEquals(1, controller.getRezervari().size());
         Rezervare r = controller.getRezervari().get(0);
         assertTrue(r.isBagajSuplimentar());
-        assertEquals("card",r.isPlataCuCard());
+        assertTrue(r.isPlataCuCard());
     }
 
     @Test
     void testLocuriOcupatePentruORezervareEconomy() {
         Rezervare r = new Rezervare("CURS123", "Ion Popescu", "0712345678",
-                2, 1, 0, true, false, "economy", false, true, 300.0,true);
+                2, 1, 0, true, false, "eco", false, true, 300.0,true);
         controller.getRezervari().add(r);
 
         int locuri = controller.getLocuriOcupate("CURS123", "economy");
@@ -130,10 +124,10 @@ public class TestStanRemus {
     @Test
     void testLocuriOcupateCuRezervariLaCurseDiferite() {
         controller.getRezervari().add(new Rezervare("CURS789", "Ana Pop", "0711222333",
-                1, 1, 0, true, false, "economy", true,
+                1, 1, 0, true, false, "eco", true,
                 true, 400.0, true));
         controller.getRezervari().add(new Rezervare("CURS101", "Bogdan I", "0722555444",
-                1, 0, 1, false, true, "economy", false,
+                1, 0, 1, false, true, "eco", false,
                 false, 350.0, false));
 
         int locuri = controller.getLocuriOcupate("CURS789", "economy");
@@ -142,13 +136,13 @@ public class TestStanRemus {
     @Test
     void testLocuriOcupateCuClasaDiferita() {
         controller.getRezervari().add(new Rezervare("CURS123", "Dana L", "0700111222",
-                2, 0, 0, true, false, "economy", false,
+                2, 0, 0, true, false, "eco", false,
                 true, 320.0, true));
         controller.getRezervari().add(new Rezervare("CURS123", "Cristi M", "0744222333",
                 1, 1, 1, false, false, "business", false,
                 false, 650.0, false));
 
-        int locuriEconomy = controller.getLocuriOcupate("CURS123", "economy");
+        int locuriEconomy = controller.getLocuriOcupate("CURS123", "eco");
         int locuriBusiness = controller.getLocuriOcupate("CURS123", "business");
 
         assertEquals(2, locuriEconomy);     // 2 adulți
@@ -158,7 +152,7 @@ public class TestStanRemus {
     @Test
     void testLocuriOcupateCandNuExistaRezervari() {
         // Nu adăugăm nicio rezervare
-        int locuri = controller.getLocuriOcupate("CURS999", "economy");
+        int locuri = controller.getLocuriOcupate("CURS999", "eco");
         assertEquals(0, locuri, "Locurile ocupate pentru o cursă/clasă fără rezervări ar trebui să fie 0");
     }
 
