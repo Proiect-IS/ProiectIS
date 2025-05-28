@@ -69,7 +69,7 @@ public class RezervareController {
         return "client_web/confirmareRezervare";
     }
     @PostMapping("/preconfirmare")
-    public String preconfiramerRezervare(@RequestParam("codCursa") String codCursa,
+    public String preconfirmareRezervare(@RequestParam("codCursa") String codCursa,
                                   @RequestParam("nume") String nume,
                                   @RequestParam("telefon") String telefon,
                                   @RequestParam("adulti") int nrAdulti,
@@ -139,4 +139,5 @@ public class RezervareController {
                 .mapToInt(r -> r.getNrAdulti() + r.getNrCopii() + r.getNrSeniori())
                 .sum();
     }
+
 }
