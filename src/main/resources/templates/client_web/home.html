@@ -62,6 +62,12 @@
     </form>
 </div>
 
+<div th:if="${zboruriCautare == null or zboruriCautare.isEmpty()}">
+    <div class="alert alert-info" role="alert">
+        Nu am găsit niciun zbor care să corespundă criteriilor tale. Te rugăm să încerci o altă căutare.
+    </div>
+</div>
+
 <div class="card" th:each="zbor : ${zboruriCautare}">
     <div style="display: flex; justify-content: space-between; align-items: center;">
         <div class="status">

@@ -72,7 +72,6 @@ public class CompanieController {
             e.printStackTrace();
         }
 
-        // Salvează lista de rezervări actualizată
         try {
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(rezervariFile, rezervari);
         } catch (IOException e) {

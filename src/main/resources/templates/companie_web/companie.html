@@ -107,6 +107,7 @@
                         <div>
                             <div><span class="label">Cod cursă:</span> <span class="cod-cursa" th:text="${zbor.cod_cursa}"></span></div>
                             <div><span class="label">Model avion:</span> <span th:text="${zbor.model}"></span></div>
+                            <div><span class="label">Perioadă:</span><span th:text="${zbor.inceput} + ' - ' + ${zbor.sfarsit}"></span></div>
                             <div><span class="label">Zi plecare:</span> <span th:text="${zbor.ziua}"></span></div>
                             <div><span class="label">Ora plecare:</span> <span th:text="${zbor.oraPlecare}"></span></div>
                         </div>
@@ -114,6 +115,7 @@
                             <div><span class="label">Eco:</span> <span th:text="${zbor.locuriEconomie}"></span> locuri</div>
                             <div><span class="label">Business:</span> <span th:text="${zbor.locuriBusiness}"></span> locuri</div>
                             <div><span class="label">First:</span> <span th:text="${zbor.locuriClasa1}"></span> locuri</div>
+                            <div><span class="label">Tur retur:</span><span th:text="${zbor.isEsteTurRetur() ? 'DA' : 'NU'}"></span></div>
                         </div>
                     </div>
                     <div class="preturi">

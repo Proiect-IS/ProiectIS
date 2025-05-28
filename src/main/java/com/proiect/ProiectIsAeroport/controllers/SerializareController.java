@@ -109,8 +109,6 @@ public class SerializareController {
             return new ResponseEntity<>("Zbor salvat cu succes!", HttpStatus.OK);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>("Eroare: Valori invalide în formular.", HttpStatus.BAD_REQUEST);
-        } catch (Exception e) {
-            return new ResponseEntity<>("Eroare la salvarea zborului.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }
