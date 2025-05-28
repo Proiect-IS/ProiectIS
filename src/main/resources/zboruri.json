@@ -161,4 +161,21 @@
   "type" : "SEZONIER",
   "oraPlecare" : "02:45",
   "zi" : "Joi"
+}, {
+  "cod_cursa" : "Z10",
+  "tip_zbor" : "REGULAT",
+  "oras_destinatie" : "Londra",
+  "oras_plecare" : "Bucuresti",
+  "tarifeBusiness" : 400.0,
+  "tarifeClasa1" : 500.0,
+  "tarifeEconomie" : 200.0,
+  "model" : "MODEL3",
+  "locuriBusiness" : 30,
+  "locuriClasa1" : 20,
+  "locuriEconomie" : 100,
+  "esteTurRetur" : false,
+  "discount" : 10,
+  "type" : "REGULAT",
+  "oraPlecare" : "22:00",
+  "zi" : "Vineri"
 } ]

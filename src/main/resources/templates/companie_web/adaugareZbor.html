@@ -8,12 +8,12 @@
 </header>
 <body style="background-color: #F8F9FA">
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const tipZborSelect = document.getElementById('tipZbor');
         const lunaStartSelect = document.getElementById('lunaStart');
         const lunaEndSelect = document.getElementById('lunaEnd');
         const zborForm = document.getElementById('zborForm');
-        const modelAvionInput = document.getElementById('modelAvion'); // Get the modelAvion input
+        const modelAvionInput = document.getElementById('modelAvion');
 
         function togglePerioada() {
             if (tipZborSelect.value === 'SEZONIER') {
@@ -29,7 +29,7 @@
 
         tipZborSelect.addEventListener('change', togglePerioada);
 
-        zborForm.addEventListener('submit', function(event) {
+        zborForm.addEventListener('submit', function (event) {
             event.preventDefault();
 
             const formData = new FormData(zborForm);
@@ -39,9 +39,7 @@
                 zborData[key] = value;
             }
             zborData['tipZbor'] = document.getElementById('tipZbor').value.toUpperCase();
-            //zborData['model'] = document.getElementById('modelAvion').value.toUpperCase();
-            zborData['modelAvion'] = modelAvionInput.value.toUpperCase(); // Corrected line
-            //console.log(zborData);
+            zborData['modelAvion'] = modelAvionInput.value.toUpperCase();
             fetch('/salveazaZbor', {
                 method: 'POST',
                 headers: {
@@ -49,16 +47,38 @@
                 },
                 body: JSON.stringify(zborData)
             })
-                .then(response => response.json())
+                .then(response => {
+                    // Verifică dacă răspunsul este OK (status 2xx)
+                    if (response.ok) {
+                        // Verifică Content-Type header
+                        const contentType = response.headers.get("content-type");
+                        if (contentType && contentType.includes("application/json")) {
+                            return response.json(); // Încearcă să parsezi ca JSON
+                        } else {
+                            return response.text(); // Altfel, citește ca text simplu
+                        }
+                    } else {
+                        // Dacă răspunsul nu este OK (status 4xx, 5xx), citește-l ca text
+                        return response.text().then(text => {
+                            throw new Error(text || 'Eroare la salvarea zborului!');
+                        });
+                    }
+                })
                 .then(data => {
-                    console.log('Succes:', data);
-                    // Aici poți gestiona răspunsul de la backend (de exemplu, afișa un mesaj de succes)
-                    alert('Zbor salvat cu succes!'); // Simple alert for success
+                    console.log('Răspuns de la server:', data);
+                    // Aici gestionezi datele primite, indiferent dacă sunt JSON sau text
+                    if (typeof data === 'object' && data !== null && data.status === 'success') {
+                        alert(data.message); // Dacă backend-ul trimite JSON structurat
+                    } else if (typeof data === 'string') {
+                        alert(data); // Dacă backend-ul trimite text simplu (pentru succes)
+                    } else {
+                        alert('Zbor salvat cu succes!'); // Fallback, dacă nu știm ce e
+                    }
                 })
                 .catch((error) => {
-                    console.error('Eroare:', error);
-                    // Aici poți gestiona erorile (de exemplu, afișa un mesaj de eroare)
-                    alert('Eroare la salvarea zborului!');  // Simple alert for error
+                    console.error('Eroare la salvarea zborului:', error);
+                    // Mesajul de eroare vine acum din `error.message`
+                    alert('Eroare la salvarea zborului: ' + error.message);
                 });
         });
     });
@@ -122,13 +142,15 @@
                 </div>
                 <div class="col-md-4">
                     <div class="input-group">
-                        <input type="number" class="form-control" name="pretClasaBusiness" step="1" placeholder="Pret Business">
+                        <input type="number" class="form-control" name="pretClasaBusiness" step="1"
+                               placeholder="Pret Business">
                         <span class="input-group-text">RON</span>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="input-group">
-                        <input type="number" class="form-control" name="pretClasaEconomie" step="1" placeholder="Pret Economie">
+                        <input type="number" class="form-control" name="pretClasaEconomie" step="1"
+                               placeholder="Pret Economie">
                         <span class="input-group-text">RON</span>
                     </div>
                 </div>
@@ -200,7 +222,8 @@
         <div class="col-12">
             <div class="bottomButtons">
                 <button type="submit" class="btn btn-primary">Salvare</button>
-                <button type="button" class="btn btn-secondary" onclick="window.location.href='companie'">Anulare</button>
+                <button type="button" class="btn btn-secondary" onclick="window.location.href='companie'">Anulare
+                </button>
             </div>
         </div>
     </form>
