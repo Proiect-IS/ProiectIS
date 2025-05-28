@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class CompanieController {
 
-    private List<Zbor> zboruri = new ArrayList<>();
+    public List<Zbor> zboruri = new ArrayList<>();
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final File zboruriFile = new File("src/main/resources/zboruri.json");
-    private List<Rezervare> rezervari = new ArrayList<>();
+    public List<Rezervare> rezervari = new ArrayList<>();
     private final ObjectMapper objectMapper1 = new ObjectMapper();
     private final File rezervariFile = new File("src/main/resources/rezervari.json");
 
