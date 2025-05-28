@@ -27,7 +27,6 @@ public class LoginController {
                 return "client_web/login";
             }
         } else if ("staff".equals(userType)) {
-            // Logica de verificare a parolei pentru clienți standard
             if (checkStandardUserPassword(password)) {
                 return "redirect:/personal";
             } else {
@@ -40,10 +39,7 @@ public class LoginController {
         }
     }
 
-    // Metode placeholder pentru verificarea parolei (va trebui să le implementezi)
     private boolean checkCompanyPassword(String password) {
-        // Aici vei interoga baza de date sau altă sursă pentru a verifica parola companiei
-        // Compară password cu parola stocată pentru companii
         return "parolacompanie".equals(password);
     }
 
