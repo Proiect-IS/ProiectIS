@@ -103,7 +103,7 @@ public class TestStanRemus {
                 2, 1, 0, true, false, "eco", false, true, 300.0,true);
         controller.getRezervari().add(r);
 
-        int locuri = controller.getLocuriOcupate("CURS123", "economy");
+        int locuri = controller.getLocuriOcupate("CURS123", "eco");
         assertEquals(3, locuri);  // 2 adulți + 1 copil
     }
 
@@ -130,7 +130,7 @@ public class TestStanRemus {
                 1, 0, 1, false, true, "eco", false,
                 false, 350.0, false));
 
-        int locuri = controller.getLocuriOcupate("CURS789", "economy");
+        int locuri = controller.getLocuriOcupate("CURS789", "eco");
         assertEquals(2, locuri);  // doar prima rezervare contează
     }
     @Test

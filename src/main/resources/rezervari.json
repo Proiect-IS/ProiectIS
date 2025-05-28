@@ -1,15 +1,1 @@
-[ {
-  "codCursa" : "Z1",
-  "numePasager" : "Simoc David",
-  "telefon" : "0773886961",
-  "nrAdulti" : 2,
-  "nrCopii" : 0,
-  "nrSeniori" : 0,
-  "masaInclusa" : true,
-  "bagajSuplimentar" : true,
-  "clasa" : "business",
-  "turRetur" : true,
-  "plataCuCard" : false,
-  "pretTotal" : 1254.0,
-  "validat" : true
-} ]
+[ ]
